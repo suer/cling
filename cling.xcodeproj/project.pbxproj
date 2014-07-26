@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		80AE1AB31983C23400524235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB21983C23400524235 /* AppDelegate.swift */; };
-		80AE1AB51983C23400524235 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB41983C23400524235 /* ViewController.swift */; };
-		80AE1AB81983C23400524235 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80AE1AB61983C23400524235 /* Main.storyboard */; };
+		80AE1AB51983C23400524235 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB41983C23400524235 /* MainViewController.swift */; };
 		80AE1ABA1983C23400524235 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80AE1AB91983C23400524235 /* Images.xcassets */; };
 		80AE1AC61983C23400524235 /* clingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AC51983C23400524235 /* clingTests.swift */; };
 /* End PBXBuildFile section */
@@ -28,8 +27,7 @@
 		80AE1AAD1983C23400524235 /* cling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AE1AB11983C23400524235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80AE1AB21983C23400524235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		80AE1AB41983C23400524235 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		80AE1AB71983C23400524235 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		80AE1AB41983C23400524235 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		80AE1AB91983C23400524235 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		80AE1ABF1983C23400524235 /* clingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = clingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AE1AC41983C23400524235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,8 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				80AE1AB21983C23400524235 /* AppDelegate.swift */,
-				80AE1AB41983C23400524235 /* ViewController.swift */,
-				80AE1AB61983C23400524235 /* Main.storyboard */,
+				80AE1AB41983C23400524235 /* MainViewController.swift */,
 				80AE1AB91983C23400524235 /* Images.xcassets */,
 				80AE1AB01983C23400524235 /* Supporting Files */,
 			);
@@ -189,7 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80AE1AB81983C23400524235 /* Main.storyboard in Resources */,
 				80AE1ABA1983C23400524235 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,7 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80AE1AB51983C23400524235 /* ViewController.swift in Sources */,
+				80AE1AB51983C23400524235 /* MainViewController.swift in Sources */,
 				80AE1AB31983C23400524235 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,17 +226,6 @@
 			targetProxy = 80AE1AC01983C23400524235 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		80AE1AB61983C23400524235 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				80AE1AB71983C23400524235 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		80AE1AC71983C23400524235 /* Debug */ = {
@@ -328,6 +313,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = cling/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -339,6 +325,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = cling/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

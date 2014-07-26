@@ -1,0 +1,7 @@
+project.xcworkspace
+xcuserdata
+*xcworkspace/
+Pods/
+preference.plist
+*.ipa
+certs/
