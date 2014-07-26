@@ -62,7 +62,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        return UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        return EditableViewCell(reuseIdentifier: "Cell")
     }
 
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
