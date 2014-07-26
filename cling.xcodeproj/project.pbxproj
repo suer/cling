@@ -11,6 +11,8 @@
 		80AE1AB51983C23400524235 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB41983C23400524235 /* MainViewController.swift */; };
 		80AE1ABA1983C23400524235 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80AE1AB91983C23400524235 /* Images.xcassets */; };
 		80AE1AC61983C23400524235 /* clingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AC51983C23400524235 /* clingTests.swift */; };
+		80AE1AD01983CE5100524235 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1ACF1983CE5100524235 /* PreferenceViewController.swift */; };
+		80AE1AD21983CED300524235 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AD11983CED300524235 /* ViewControllers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 		80AE1ABF1983C23400524235 /* clingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = clingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AE1AC41983C23400524235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80AE1AC51983C23400524235 /* clingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clingTests.swift; sourceTree = "<group>"; };
+		80AE1ACF1983CE5100524235 /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
+		80AE1AD11983CED300524235 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				80AE1AB41983C23400524235 /* MainViewController.swift */,
 				80AE1AB91983C23400524235 /* Images.xcassets */,
 				80AE1AB01983C23400524235 /* Supporting Files */,
+				80AE1ACF1983CE5100524235 /* PreferenceViewController.swift */,
+				80AE1AD11983CED300524235 /* ViewControllers.swift */,
 			);
 			path = cling;
 			sourceTree = "<group>";
@@ -204,7 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80AE1AD01983CE5100524235 /* PreferenceViewController.swift in Sources */,
 				80AE1AB51983C23400524235 /* MainViewController.swift in Sources */,
+				80AE1AD21983CED300524235 /* ViewControllers.swift in Sources */,
 				80AE1AB31983C23400524235 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
