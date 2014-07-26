@@ -64,7 +64,18 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         return UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
     }
-    
+
+    func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            if (editingStyle == UITableViewCellEditingStyle.Delete) {
+                let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
+                page.MR_deleteEntity()
+                NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+                reloadFetchedResultsController()
+                tableView!.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
