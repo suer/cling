@@ -11,6 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController(rootViewController: ViewControllers().mainViewController)
         window!.addSubview(navigationController.view)
         window!.rootViewController = navigationController
+        MagicalRecord.setupCoreDataStackWithStoreNamed("cling.sqlite3")
         return true
     }
 
@@ -27,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication!) {
+        MagicalRecord.cleanUp()
     }
 }
 
