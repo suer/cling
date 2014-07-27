@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6D9424D06D124BEBAF7CC97F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4AAD2E7C414C0FBBA8288D /* libPods.a */; };
+		803524221984FC9400F677F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803524211984FC9400F677F7 /* QuartzCore.framework */; };
 		80AE1AB31983C23400524235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB21983C23400524235 /* AppDelegate.swift */; };
 		80AE1AB51983C23400524235 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB41983C23400524235 /* MainViewController.swift */; };
 		80AE1ABA1983C23400524235 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80AE1AB91983C23400524235 /* Images.xcassets */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		803524211984FC9400F677F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		80AE1AAD1983C23400524235 /* cling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AE1AB11983C23400524235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80AE1AB21983C23400524235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				803524221984FC9400F677F7 /* QuartzCore.framework in Frameworks */,
 				6D9424D06D124BEBAF7CC97F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,6 +148,7 @@
 		D4897137BEB649E194BF4D38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				803524211984FC9400F677F7 /* QuartzCore.framework */,
 				8A4AAD2E7C414C0FBBA8288D /* libPods.a */,
 			);
 			name = Frameworks;
