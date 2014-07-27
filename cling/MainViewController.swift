@@ -2,20 +2,20 @@ import UIKit
 import QuartzCore
 
 class MainViewController: UIViewController {
-    private let rotationTime = 20.0
+    private let rotationTime = 60.0
     var webView : UIWebView?
     var urls: [String] = []
     var timer: NSTimer?
     var selectedURLIndex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTabBar()
 #if arch(i386) || arch(x86_64)
         FLEXManager.sharedManager().showExplorer()
 #endif
     }
 
     override func viewWillAppear(animated: Bool) {
+        loadTabBar()
         loadUrls()
         loadWebView()
         setTimer()
@@ -57,8 +57,7 @@ class MainViewController: UIViewController {
             url = urls[selectedURLIndex]
         }
         
-        let navigationBarHeight = navigationController.navigationBar.frame.height
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+        
         webView = UIWebView(frame: CGRectMake(
             0,
             0,
@@ -76,6 +75,8 @@ class MainViewController: UIViewController {
 
     func nextButtonTapped(sender: AnyObject) {
         flip()
+        setTimer()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,15 +88,11 @@ class MainViewController: UIViewController {
             return
         }
 
-        selectedURLIndex++
-        if (selectedURLIndex >= urls.count) {
-            selectedURLIndex = 0
-        }
-        NSLog("URL: %@", urls[selectedURLIndex])
+        selectedURLIndex = (selectedURLIndex + 1) % urls.count
         webView?.loadRequest(NSURLRequest(URL: NSURL(string: urls[selectedURLIndex])))
 
         UIView.beginAnimations("flip", context: nil)
-        UIView.setAnimationDuration(1.0)
+        UIView.setAnimationDuration(3.0)
         UIView.setAnimationTransition(UIViewAnimationTransition.FlipFromLeft, forView: webView!, cache: false)
         UIView.commitAnimations()
     }
