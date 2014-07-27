@@ -1,15 +1,16 @@
 class EditableViewCell: UITableViewCell {
     var textField: UITextField?
     var saveButton: UITextField?
-    
-    init(reuseIdentifier: String) {
+    let width: CGFloat
+    init(width: CGFloat, reuseIdentifier: String) {
+        self.width = width
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
         selectionStyle = UITableViewCellSelectionStyle.None
         showEditField()
     }
     
     private func showEditField() {
-        let textField = UITextField(frame: CGRectMake(5, 5, bounds.width - 70, bounds.height - 10))
+        let textField = UITextField(frame: CGRectMake(30, 5, width - 120, bounds.height - 10))
         textField.borderStyle = UITextBorderStyle.RoundedRect
         textField.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
         textField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
@@ -19,13 +20,18 @@ class EditableViewCell: UITableViewCell {
         textField.adjustsFontSizeToFitWidth = true
         addSubview(textField)
         
-        let saveButton = UIButton(frame: CGRectMake(5 + bounds.width - 60, 5, 60, bounds.height - 10))
+        let normalTextColor = UIColor(red: CGFloat(0.5), green: CGFloat(0.5), blue: CGFloat(0.5), alpha: CGFloat(1.0))
+        let highlightedTextColor = UIColor(red: CGFloat(0.9), green: CGFloat(0.9), blue: CGFloat(0.9), alpha: CGFloat(1.0))
+        let saveButton = UIButton(frame: CGRectMake(5 + width - 80, 5, 60, bounds.height - 10))
         saveButton.layer.borderWidth = 1.0
-        saveButton.layer.borderColor = UIColor.lightGrayColor().CGColor
+        saveButton.layer.borderColor = normalTextColor.CGColor
         saveButton.layer.cornerRadius = 5.0
-        let textColor = UIColor(red: CGFloat(0.9), green: CGFloat(0.9), blue: CGFloat(0.9), alpha: CGFloat(1.0))
-        saveButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+
+        saveButton.setTitleColor(normalTextColor, forState: UIControlState.Normal)
+        saveButton.setTitleColor(highlightedTextColor, forState: UIControlState.Highlighted)
         saveButton.setTitle("Save", forState: UIControlState.Normal)
+        saveButton.setTitle("Save", forState: UIControlState.Highlighted)
+
         addSubview(saveButton)
     }
     

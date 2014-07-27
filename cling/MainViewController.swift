@@ -6,6 +6,10 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         loadTabBar()
         loadWebView()
+#if arch(i386) || arch(x86_64)
+        FLEXManager.sharedManager().showExplorer()
+#endif
+
     }
 
     func loadTabBar() {
