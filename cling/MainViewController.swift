@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     }
     
     private func setTimer() {
-        if (timer == nil) {
+        if (timer != nil) {
             stopTimer()
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(rotationTime, target: self, selector: Selector("flip"), userInfo: nil, repeats: true)
