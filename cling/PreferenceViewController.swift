@@ -8,6 +8,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "URL Preference"
         setupFetchedResultsController()
         setupTabBar()
         setupTableView()
@@ -33,40 +34,41 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func addButtonTapped(sender: AnyObject) {
         let indexPath = NSIndexPath(forItem: tableView!.numberOfRowsInSection(0), inSection: 0)
-        let page = Page.MR_createEntity() as Page
-        page.url = ""
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
-        reloadFetchedResultsController()        
+        PageWrapper.createBlankRecord()
+        reloadFetchedResultsController()
         tableView!.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-        tableView!.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         selectCell(indexPath)
     }
 
     private func setupTableView() {
-        let navigationBarHeight = navigationController.navigationBar.frame.height
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
         let tableViewRect = CGRectMake(
             0,
-            navigationBarHeight + statusBarHeight,
+            0,
             view.bounds.width,
-            view.bounds.height  - navigationBarHeight - statusBarHeight)
-        
+            view.bounds.height)
         tableView = UITableView(frame: tableViewRect)
         tableView!.delegate = self
         tableView!.dataSource = self
         view.addSubview(tableView)
-
     }
     
     func selectCell(indexPath: NSIndexPath) {
         tableView!.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Top)
         let cell = tableView!.cellForRowAtIndexPath(indexPath) as EditableViewCell
-        cell.textField!.selected = true
-        cell.textField!.enabled = true
-        cell.textField!.becomeFirstResponder()
+        cell.enable()
+        cell.showKeyBoard()
+        tableView!.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
         selectedCellIndexPath = indexPath
     }
 
+    func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+        return nil
+    }
+    
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int  {
         let info = fetchedResultsController!.sections[section] as NSFetchedResultsSectionInfo
         return info.numberOfObjects
@@ -74,9 +76,9 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = EditableViewCell(width: tableView.bounds.width, reuseIdentifier: "Cell")
-        cell.textField!.delegate = self
+        cell.setTextFieldDelegate(self)
         let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
-        cell.textField!.text = page.url
+        cell.setUrl(page.url)
         return cell
     }
 
@@ -84,14 +86,6 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             removeCell(indexPath)
         }
-    }
-    
-    private func removeCell(indexPath: NSIndexPath) {
-        let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
-        page.MR_deleteEntity()
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
-        reloadFetchedResultsController()
-        tableView!.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
     }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
@@ -105,16 +99,24 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     private func saveCell(indexPath: NSIndexPath) {
         let cell = tableView!.cellForRowAtIndexPath(indexPath) as EditableViewCell
-        if (cell.textField!.text.isEmpty) {
+        let url = cell.getUrl()
+        if (url.isEmpty) {
             removeCell(indexPath)
             return
         }
         let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
-        page.url = cell.textField!.text
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
-        cell.textField!.enabled = false
+        PageWrapper(page: page).updateUrl(url)
+        cell.disable()
     }
+
     
+    private func removeCell(indexPath: NSIndexPath) {
+        let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
+        PageWrapper(page: page).delete()
+        reloadFetchedResultsController()
+        tableView!.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+    }
+
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
         if let indexPath = selectedCellIndexPath {

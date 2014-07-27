@@ -9,6 +9,7 @@ class MainViewController: UIViewController {
     var selectedURLIndex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Cling"
 #if arch(i386) || arch(x86_64)
         FLEXManager.sharedManager().showExplorer()
 #endif
@@ -18,7 +19,7 @@ class MainViewController: UIViewController {
         loadTabBar()
         loadUrls()
         loadWebView()
-        setTimer()
+        restartTimer()
     }
     
     func loadUrls() {
@@ -36,28 +37,13 @@ class MainViewController: UIViewController {
         navigationItem.leftBarButtonItem = nextButton
     }
     
-    private func setTimer() {
-        if (timer != nil) {
-            stopTimer()
-        }
-        timer = NSTimer.scheduledTimerWithTimeInterval(rotationTime, target: self, selector: Selector("flip"), userInfo: nil, repeats: true)
-    }
-    
-    private func stopTimer() {
-        if (timer != nil) {
-            timer!.invalidate()
-            timer = nil
-        }
-    }
-
     func loadWebView() {
         selectedURLIndex = 0
         var url = ""
         if (!urls.isEmpty) {
             url = urls[selectedURLIndex]
         }
-        
-        
+
         webView = UIWebView(frame: CGRectMake(
             0,
             0,
@@ -75,8 +61,7 @@ class MainViewController: UIViewController {
 
     func nextButtonTapped(sender: AnyObject) {
         flip()
-        setTimer()
-
+        restartTimer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,12 +73,38 @@ class MainViewController: UIViewController {
             return
         }
 
-        selectedURLIndex = (selectedURLIndex + 1) % urls.count
+        selectedURLIndex = nextURLIndex(selectedURLIndex)
         webView?.loadRequest(NSURLRequest(URL: NSURL(string: urls[selectedURLIndex])))
 
         UIView.beginAnimations("flip", context: nil)
         UIView.setAnimationDuration(3.0)
         UIView.setAnimationTransition(UIViewAnimationTransition.FlipFromLeft, forView: webView!, cache: false)
         UIView.commitAnimations()
+    }
+
+    private func nextURLIndex(index: Int) -> Int {
+        if (urls.isEmpty) {
+            return 0
+        }
+        return (selectedURLIndex + 1) % urls.count
+    }
+
+    private func startTimer() {
+        if (timer == nil) {
+            timer = NSTimer.scheduledTimerWithTimeInterval(rotationTime, target: self, selector: Selector("flip"), userInfo: nil, repeats: true)
+        } else {
+            timer!.fire()
+        }
+    }
+
+    private func stopTimer() {
+        if (timer != nil) {
+            timer!.invalidate()
+        }
+    }
+
+    private func restartTimer() {
+        stopTimer()
+        startTimer()
     }
 }
