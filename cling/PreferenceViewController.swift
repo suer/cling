@@ -1,9 +1,10 @@
 import UIKit
 
-class PreferenceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PreferenceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     var tableView: UITableView?
     var fetchedResultsController: NSFetchedResultsController?
+    var selectedCellIndexPath: NSIndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         reloadFetchedResultsController()        
         tableView!.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         tableView!.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        selectCell(indexPath)
     }
 
     private func setupTableView() {
@@ -56,24 +58,69 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
 
     }
     
+    func selectCell(indexPath: NSIndexPath) {
+        tableView!.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.Top)
+        let cell = tableView!.cellForRowAtIndexPath(indexPath) as EditableViewCell
+        cell.textField!.selected = true
+        cell.textField!.enabled = true
+        cell.textField!.becomeFirstResponder()
+        selectedCellIndexPath = indexPath
+    }
+
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int  {
         let info = fetchedResultsController!.sections[section] as NSFetchedResultsSectionInfo
         return info.numberOfObjects
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        return EditableViewCell(width: tableView.bounds.width, reuseIdentifier: "Cell")
+        let cell = EditableViewCell(width: tableView.bounds.width, reuseIdentifier: "Cell")
+        cell.textField!.delegate = self
+        let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
+        cell.textField!.text = page.url
+        return cell
     }
 
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
-            let cell = tableView.cellForRowAtIndexPath(indexPath)
-            if (editingStyle == UITableViewCellEditingStyle.Delete) {
-                let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
-                page.MR_deleteEntity()
-                NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
-                reloadFetchedResultsController()
-                tableView!.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-            }
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            removeCell(indexPath)
+        }
+    }
+    
+    private func removeCell(indexPath: NSIndexPath) {
+        let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
+        page.MR_deleteEntity()
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        reloadFetchedResultsController()
+        tableView!.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+    }
+    
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as EditableViewCell
+        selectCell(indexPath)
+    }
+    
+    func tableView(tableView: UITableView!, didDeselectRowAtIndexPath indexPath: NSIndexPath!) {
+        saveCell(indexPath)
+    }
+    
+    private func saveCell(indexPath: NSIndexPath) {
+        let cell = tableView!.cellForRowAtIndexPath(indexPath) as EditableViewCell
+        if (cell.textField!.text.isEmpty) {
+            removeCell(indexPath)
+            return
+        }
+        let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
+        page.url = cell.textField!.text
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        cell.textField!.enabled = false
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        textField.resignFirstResponder()
+        if let indexPath = selectedCellIndexPath {
+            saveCell(indexPath)
+        }
+        return true
     }
 
     override func didReceiveMemoryWarning() {
