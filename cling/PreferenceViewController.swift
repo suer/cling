@@ -13,6 +13,13 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         setupTabBar()
         setupTableView()
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if let indexPath = selectedCellIndexPath {
+            saveCell(indexPath)
+        }
+        super.viewWillDisappear(animated)
+    }
 
     private func setupFetchedResultsController() {
         fetchedResultsController = Page.MR_fetchAllSortedBy("_pk", ascending: true, withPredicate: NSPredicate(format: "1 = 1", []), groupBy: nil, delegate: nil)
@@ -33,6 +40,11 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func addButtonTapped(sender: AnyObject) {
+        if let indexPath = selectedCellIndexPath {
+            saveCell(indexPath)
+            tableView!.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+
         let indexPath = NSIndexPath(forItem: tableView!.numberOfRowsInSection(0), inSection: 0)
         PageWrapper.createBlankRecord()
         reloadFetchedResultsController()
@@ -98,15 +110,16 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func saveCell(indexPath: NSIndexPath) {
-        let cell = tableView!.cellForRowAtIndexPath(indexPath) as EditableViewCell
-        let url = cell.getUrl()
-        if (url.isEmpty) {
-            removeCell(indexPath)
-            return
+        if let cell = tableView!.cellForRowAtIndexPath(indexPath) as? EditableViewCell {
+            let url = cell.getUrl()
+            if (url.isEmpty) {
+                removeCell(indexPath)
+                return
+            }
+            let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
+            PageWrapper(page: page).updateUrl(url)
+            cell.disable()
         }
-        let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
-        PageWrapper(page: page).updateUrl(url)
-        cell.disable()
     }
 
     
