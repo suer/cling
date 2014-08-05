@@ -1,6 +1,11 @@
-class EditableViewCell: UITableViewCell {
+public class EditableViewCell: UITableViewCell {
     private var textField: UITextField?
     let width: CGFloat
+
+    required public init(coder: NSCoder!) {
+        fatalError("NSCoding not supported")
+    }
+
     init(width: CGFloat, reuseIdentifier: String) {
         self.width = width
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)

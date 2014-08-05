@@ -1,4 +1,4 @@
-class PageWrapper {
+public class PageWrapper {
 
     private let page: Page
     init(page: Page) {

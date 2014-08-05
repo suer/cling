@@ -49,7 +49,7 @@ class MainViewController: UIViewController {
             0,
             view.bounds.width,
             view.bounds.height))
-        view.addSubview(webView)
+        view.addSubview(webView!)
         if (!url.isEmpty) {
             webView?.loadRequest(NSURLRequest(URL: NSURL(string: url)))
         }

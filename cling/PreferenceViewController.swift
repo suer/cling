@@ -29,7 +29,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     private func reloadFetchedResultsController() {
         var error: NSError?
         fetchedResultsController?.performFetch(&error)
-        if (error) {
+        if (error != nil) {
             NSLog("error: %@", error!)
         }
     }
@@ -61,7 +61,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView = UITableView(frame: tableViewRect)
         tableView!.delegate = self
         tableView!.dataSource = self
-        view.addSubview(tableView)
+        view.addSubview(tableView!)
     }
     
     func selectCell(indexPath: NSIndexPath) {
