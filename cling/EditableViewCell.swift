@@ -2,7 +2,7 @@ public class EditableViewCell: UITableViewCell {
     private var textField: UITextField?
     let width: CGFloat
 
-    required public init(coder: NSCoder!) {
+    required public init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
 

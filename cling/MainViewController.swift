@@ -56,7 +56,7 @@ class MainViewController: UIViewController {
     }
 
     func preferenceButtonTapped(sender: AnyObject) {
-        navigationController.pushViewController(ViewControllers().preferenceViewController, animated: true)
+        navigationController!.pushViewController(ViewControllers().preferenceViewController, animated: true)
     }
 
     func nextButtonTapped(sender: AnyObject) {

@@ -81,12 +81,12 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         return nil
     }
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int  {
-        let info = fetchedResultsController!.sections[section] as NSFetchedResultsSectionInfo
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int  {
+        let info = fetchedResultsController!.sections![section] as NSFetchedResultsSectionInfo
         return info.numberOfObjects
     }
     
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = EditableViewCell(width: tableView.bounds.width, reuseIdentifier: "Cell")
         cell.setTextFieldDelegate(self)
         let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
