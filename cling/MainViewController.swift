@@ -4,9 +4,9 @@ import QuartzCore
 class MainViewController: UIViewController {
     private let rotationTime = 60.0
     var webView : UIWebView?
-    var urls: [String] = []
-    var timer: NSTimer?
+    var viewModel = MainViewModel()
     var selectedURLIndex = 0
+    let cancelSubject = RACSubject()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Cling"
@@ -17,17 +17,9 @@ class MainViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         loadTabBar()
-        loadUrls()
+        viewModel.loadUrls()
         loadWebView()
         restartTimer()
-    }
-    
-    func loadUrls() {
-        urls = (Page.MR_findAll() as [Page]).map{(page: Page) -> String in
-            page.url
-        }.filter{(url: String) -> Bool in
-            !url.isEmpty
-        }
     }
 
     func loadTabBar() {
@@ -39,20 +31,13 @@ class MainViewController: UIViewController {
     
     func loadWebView() {
         selectedURLIndex = 0
-        var url = ""
-        if (!urls.isEmpty) {
-            url = urls[selectedURLIndex]
-        }
-
         webView = UIWebView(frame: CGRectMake(
             0,
             0,
             view.bounds.width,
             view.bounds.height))
         view.addSubview(webView!)
-        if (!url.isEmpty) {
-            webView?.loadRequest(NSURLRequest(URL: NSURL(string: url)))
-        }
+        webView?.loadRequest(NSURLRequest(URL: NSURL(string: viewModel.url)))
     }
 
     func preferenceButtonTapped(sender: AnyObject) {
@@ -68,13 +53,9 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func flip() {
-        if (urls.isEmpty) {
-            return
-        }
-
-        selectedURLIndex = nextURLIndex(selectedURLIndex)
-        webView?.loadRequest(NSURLRequest(URL: NSURL(string: urls[selectedURLIndex])))
+    private func flip() {
+        viewModel.increment()
+        webView?.loadRequest(NSURLRequest(URL: NSURL(string: viewModel.url)))
 
         UIView.beginAnimations("flip", context: nil)
         UIView.setAnimationDuration(3.0)
@@ -82,25 +63,12 @@ class MainViewController: UIViewController {
         UIView.commitAnimations()
     }
 
-    private func nextURLIndex(index: Int) -> Int {
-        if (urls.isEmpty) {
-            return 0
-        }
-        return (selectedURLIndex + 1) % urls.count
-    }
-
     private func startTimer() {
-        if (timer == nil) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(rotationTime, target: self, selector: Selector("flip"), userInfo: nil, repeats: true)
-        } else {
-            timer!.fire()
-        }
+        RACSignal.interval(rotationTime, onScheduler: RACScheduler.mainThreadScheduler()).takeUntil(cancelSubject).subscribeNext({obj in self.flip()})
     }
 
     private func stopTimer() {
-        if (timer != nil) {
-            timer!.invalidate()
-        }
+        cancelSubject.sendNext(RACUnit.defaultUnit())
     }
 
     private func restartTimer() {
