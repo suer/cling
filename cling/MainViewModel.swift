@@ -1,10 +1,7 @@
-class MainViewModel {
-    var url = ""
+class MainViewModel: NSObject {
+    dynamic var url = ""
     private var urls: [String] = []
     private var selectedURLIndex = 0
-
-    init() {
-    }
 
     func loadUrls() {
         urls = (Page.MR_findAll() as [Page]).map{(page: Page) -> String in

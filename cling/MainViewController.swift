@@ -5,7 +5,6 @@ class MainViewController: UIViewController {
     private let rotationTime = 60.0
     var webView : UIWebView?
     var viewModel = MainViewModel()
-    var selectedURLIndex = 0
     let cancelSubject = RACSubject()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,8 +16,8 @@ class MainViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         loadTabBar()
-        viewModel.loadUrls()
         loadWebView()
+        viewModel.loadUrls()
         restartTimer()
     }
 
@@ -30,14 +29,21 @@ class MainViewController: UIViewController {
     }
     
     func loadWebView() {
-        selectedURLIndex = 0
+        if (webView != nil) {
+            return
+        }
         webView = UIWebView(frame: CGRectMake(
             0,
             0,
             view.bounds.width,
             view.bounds.height))
         view.addSubview(webView!)
-        webView?.loadRequest(NSURLRequest(URL: NSURL(string: viewModel.url)))
+        viewModel.rac_valuesForKeyPath("url", observer: viewModel).subscribeNext({
+            url in
+            self.webView?.loadRequest(NSURLRequest(URL: NSURL(string: url as String)))
+            return
+        })
+
     }
 
     func preferenceButtonTapped(sender: AnyObject) {
@@ -55,7 +61,6 @@ class MainViewController: UIViewController {
     
     private func flip() {
         viewModel.increment()
-        webView?.loadRequest(NSURLRequest(URL: NSURL(string: viewModel.url)))
 
         UIView.beginAnimations("flip", context: nil)
         UIView.setAnimationDuration(3.0)
