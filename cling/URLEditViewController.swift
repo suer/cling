@@ -2,6 +2,7 @@ class URLEditViewController: UIViewController {
     let preferenceViewModel: PreferenceViewModel
     var urlTextView: UITextView?
     var indexPath: NSIndexPath?
+    var saveButton: UIBarButtonItem?
 
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, preferenceViewModel: PreferenceViewModel) {
         self.preferenceViewModel = preferenceViewModel
@@ -21,9 +22,9 @@ class URLEditViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Edit URL"
         self.view.backgroundColor = UIColor.whiteColor()
+        loadTextView()
         loadCancelButton()
         loadSaveButton()
-        loadTextView()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -54,18 +55,20 @@ class URLEditViewController: UIViewController {
     }
 
     private func loadSaveButton() {
-        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: nil, action: nil)
-        saveButton.rac_command = RACCommand(signalBlock: {
+        saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: nil, action: nil)
+        saveButton!.rac_command = RACCommand(signalBlock: {
             input in
             if self.indexPath == nil {
                 self.preferenceViewModel.addPage(self.urlTextView!.text)
             } else {
                 self.preferenceViewModel.savePage(self.urlTextView!.text, indexPath: self.indexPath!)
             }
+
             self.dismissViewControllerAnimated(true, completion: nil)
             return RACSignal.empty()
         })
         navigationItem.rightBarButtonItem = saveButton
+        saveButton!.enabled = false
     }
 
     private func loadTextView() {
@@ -74,5 +77,11 @@ class URLEditViewController: UIViewController {
         }
         self.urlTextView = UITextView(frame: CGRectMake(0, 0,  view.frame.width, view.frame.height))
         view.addSubview(urlTextView!)
+        urlTextView!.rac_textSignal().subscribeNext({
+            input in
+            if (self.saveButton != nil) {
+                self.saveButton!.enabled = !self.urlTextView!.text.isEmpty
+            }
+        })
     }
 }

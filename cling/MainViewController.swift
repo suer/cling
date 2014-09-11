@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         loadTabBar()
         loadWebView()
-        viewModel.loadUrls()
+        viewModel.reset()
         restartTimer()
     }
 

@@ -12,6 +12,11 @@ class MainViewModel: NSObject {
         url = urls.first ?? ""
     }
 
+    func reset() {
+        loadUrls()
+        selectedURLIndex = 0
+    }
+
     func increment() {
         if (urls.isEmpty) {
             return
