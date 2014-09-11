@@ -2,14 +2,13 @@ import UIKit
 
 class PreferenceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
+    let viewModel = PreferenceViewModel()
     var tableView: UITableView?
-    var fetchedResultsController: NSFetchedResultsController?
     var selectedCellIndexPath: NSIndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "URL Preference"
-        setupFetchedResultsController()
         setupTabBar()
         setupTableView()
     }
@@ -20,36 +19,34 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         super.viewWillDisappear(animated)
     }
-
-    private func setupFetchedResultsController() {
-        fetchedResultsController = Page.MR_fetchAllSortedBy("_pk", ascending: true, withPredicate: NSPredicate(format: "1 = 1", []), groupBy: nil, delegate: nil)
-        reloadFetchedResultsController()
-    }
-    
-    private func reloadFetchedResultsController() {
-        var error: NSError?
-        fetchedResultsController?.performFetch(&error)
-        if (error != nil) {
-            NSLog("error: %@", error!)
-        }
-    }
     
     private func setupTabBar() {
-        let preferenceButton = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("addButtonTapped:"))
+        let preferenceButton = UIBarButtonItem()
+        preferenceButton.style = UIBarButtonItemStyle.Plain
+        preferenceButton.title = "Add"
+        preferenceButton.rac_command = viewModel.createAddCellCommand()
         navigationItem.rightBarButtonItem = preferenceButton
-    }
-    
-    func addButtonTapped(sender: AnyObject) {
-        if let indexPath = selectedCellIndexPath {
-            saveCell(indexPath)
-            tableView!.deselectRowAtIndexPath(indexPath, animated: true)
-        }
+        viewModel.itemChangedSignal.subscribeNext({
+            obj in
 
-        let indexPath = NSIndexPath(forItem: tableView!.numberOfRowsInSection(0), inSection: 0)
-        PageWrapper.createBlankRecord()
-        reloadFetchedResultsController()
-        tableView!.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-        selectCell(indexPath)
+            if let fetchedResultsChange = obj as? FetchedResultsChange {
+                switch(fetchedResultsChange.type) {
+                case NSFetchedResultsChangeType.Insert:
+                    self.tableView!.insertRowsAtIndexPaths([fetchedResultsChange.newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                    self.selectedCellIndexPath = fetchedResultsChange.newIndexPath
+                    self.selectCell(fetchedResultsChange.newIndexPath!)
+                    break
+                case NSFetchedResultsChangeType.Update:
+                    break
+                case NSFetchedResultsChangeType.Delete:
+                    self.tableView!.deleteRowsAtIndexPaths([fetchedResultsChange.indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                    self.viewModel.reloadFetchedResultsController()
+                    break
+                default:
+                    break
+                }
+            }
+        })
     }
 
     private func setupTableView() {
@@ -82,21 +79,21 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int  {
-        let info = fetchedResultsController!.sections![section] as NSFetchedResultsSectionInfo
-        return info.numberOfObjects
+        return viewModel.sectionInfo().numberOfObjects
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = EditableViewCell(width: tableView.bounds.width, reuseIdentifier: "Cell")
         cell.setTextFieldDelegate(self)
-        let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
+        let page = viewModel.pageAtIndexPath(indexPath)
         cell.setUrl(page.url)
         return cell
     }
 
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            removeCell(indexPath)
+            let page = viewModel.pageAtIndexPath(indexPath)
+            PageWrapper(page: page).delete()
         }
     }
     
@@ -113,21 +110,14 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         if let cell = tableView!.cellForRowAtIndexPath(indexPath) as? EditableViewCell {
             let url = cell.getUrl()
             if (url.isEmpty) {
-                removeCell(indexPath)
+                let page = viewModel.pageAtIndexPath(indexPath)
+                PageWrapper(page: page).delete()
                 return
             }
-            let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
+            let page = viewModel.pageAtIndexPath(indexPath)
             PageWrapper(page: page).updateUrl(url)
             cell.disable()
         }
-    }
-
-    
-    private func removeCell(indexPath: NSIndexPath) {
-        let page = fetchedResultsController!.objectAtIndexPath(indexPath) as Page
-        PageWrapper(page: page).delete()
-        reloadFetchedResultsController()
-        tableView!.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
     }
 
     func textFieldShouldReturn(textField: UITextField!) -> Bool {

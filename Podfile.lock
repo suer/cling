@@ -10,15 +10,19 @@ PODS:
   - ReactiveCocoa/no-arc (2.3.1)
   - ReactiveCocoa/UI (2.3.1):
     - ReactiveCocoa/Core
+  - ReactiveViewModel (0.2):
+    - ReactiveCocoa (~> 2.1)
 
 DEPENDENCIES:
   - FLEX
   - MagicalRecord
   - ReactiveCocoa
+  - ReactiveViewModel
 
 SPEC CHECKSUMS:
   FLEX: 4e53f7bb335cc230113c271b1ee5941cc44d648d
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
+  ReactiveViewModel: 78387196df2e7535bb2776c41df15dbb17300f8a
 
 COCOAPODS: 0.33.1

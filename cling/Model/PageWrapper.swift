@@ -8,6 +8,7 @@ public class PageWrapper {
     public class func createBlankRecord() {
         let page = Page.MR_createEntity() as Page
         page.url = ""
+        page.createdAt = NSDate()
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
     

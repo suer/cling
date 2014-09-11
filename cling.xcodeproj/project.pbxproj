@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6D9424D06D124BEBAF7CC97F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4AAD2E7C414C0FBBA8288D /* libPods.a */; };
+		800C0BDF19BDE7BE00A4FBB0 /* PreferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C0BDE19BDE7BD00A4FBB0 /* PreferenceViewModel.swift */; };
+		800C0BE119BDEFB500A4FBB0 /* FetchedResultsChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */; };
 		8010176419B9E28400AE3A0D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010176319B9E28400AE3A0D /* MainViewModel.swift */; };
 		803524221984FC9400F677F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803524211984FC9400F677F7 /* QuartzCore.framework */; };
 		80AE1AB31983C23400524235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB21983C23400524235 /* AppDelegate.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		800C0BDE19BDE7BD00A4FBB0 /* PreferenceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewModel.swift; sourceTree = "<group>"; };
+		800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsChange.swift; sourceTree = "<group>"; };
 		8010176319B9E28400AE3A0D /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		803524211984FC9400F677F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		80AE1AAD1983C23400524235 /* cling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cling.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +110,8 @@
 				80AE1AB91983C23400524235 /* Images.xcassets */,
 				80AE1AB01983C23400524235 /* Supporting Files */,
 				80AE1ACF1983CE5100524235 /* PreferenceViewController.swift */,
+				800C0BDE19BDE7BD00A4FBB0 /* PreferenceViewModel.swift */,
+				800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */,
 				80AE1AD11983CED300524235 /* ViewControllers.swift */,
 				80AE1ADD1983EBE400524235 /* EditableViewCell.swift */,
 			);
@@ -291,10 +297,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				80AE1ADA1983D30C00524235 /* Page.m in Sources */,
+				800C0BE119BDEFB500A4FBB0 /* FetchedResultsChange.swift in Sources */,
 				80AE1AD01983CE5100524235 /* PreferenceViewController.swift in Sources */,
 				80AE1AB51983C23400524235 /* MainViewController.swift in Sources */,
 				80AE1AD61983D2B300524235 /* cling.xcdatamodeld in Sources */,
 				80AE1ADC1983D34200524235 /* PageWrapper.swift in Sources */,
+				800C0BDF19BDE7BE00A4FBB0 /* PreferenceViewModel.swift in Sources */,
 				80AE1AD21983CED300524235 /* ViewControllers.swift in Sources */,
 				80AE1ADE1983EBE400524235 /* EditableViewCell.swift in Sources */,
 				80AE1AB31983C23400524235 /* AppDelegate.swift in Sources */,
