@@ -4,8 +4,7 @@ class MainViewModel: NSObject {
     private var selectedURLIndex = 0
 
     func loadUrls() {
-
-        urls = (Page.MR_findAllSortedBy("createdAt", ascending: true) as [Page]).map{(page: Page) -> String in
+        urls = (Page.MR_findAllSortedBy("sort", ascending: true) as [Page]).map{(page: Page) -> String in
             page.url
             }.filter{(url: String) -> Bool in
                 !url.isEmpty

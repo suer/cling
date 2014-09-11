@@ -4,7 +4,7 @@ class PreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
     var selectedCellIndexPath: NSIndexPath?
 
     override init() {
-        self.fetchedResultsController = Page.MR_fetchAllSortedBy("createdAt", ascending: true, withPredicate: NSPredicate(format: "1 = 1", []), groupBy: nil, delegate: nil)
+        self.fetchedResultsController = Page.MR_fetchAllSortedBy("sort", ascending: true, withPredicate: NSPredicate(format: "1 = 1", []), groupBy: nil, delegate: nil)
         super.init()
         self.fetchedResultsController.delegate = self
         self.reloadFetchedResultsController()
@@ -33,6 +33,10 @@ class PreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
         if let page = pageAtIndexPath(indexPath) {
             PageWrapper(page: page).delete()
         }
+    }
+
+    func movePage(fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+        PageWrapper.move(fromIndexPath.row, toIndex: toIndexPath.row)
     }
 
     func sectionInfo() -> NSFetchedResultsSectionInfo {

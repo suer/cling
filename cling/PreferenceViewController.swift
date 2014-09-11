@@ -38,7 +38,22 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
             return RACSignal.empty()
         })
 
-        navigationItem.rightBarButtonItem = addButton
+        let editButton = UIBarButtonItem()
+        editButton.style = UIBarButtonItemStyle.Plain
+        editButton.title = "Edit"
+        editButton.rac_command = RACCommand(signalBlock: {
+            obj in
+            self.tableView!.setEditing(!self.tableView!.editing, animated: true)
+            addButton.enabled = !self.tableView!.editing
+            if (self.tableView!.editing) {
+                editButton.title = "Finish"
+            } else {
+                editButton.title = "Edit"
+            }
+            return RACSignal.empty()
+        })
+
+        navigationItem.rightBarButtonItems = [addButton, editButton]
     }
 
     private func setupTableView() {
@@ -50,6 +65,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView = UITableView(frame: tableViewRect)
         tableView!.delegate = self
         tableView!.dataSource = self
+        tableView!.setEditing(false, animated: true)
         view.addSubview(tableView!)
     }
 
@@ -100,6 +116,20 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
 
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+        println(fromIndexPath.row)
+        println(toIndexPath.row)
+        viewModel.movePage(fromIndexPath, toIndexPath: toIndexPath)
+    }
+/*
+    func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.Delete
+    }
+*/
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             viewModel.deletePage(indexPath)
