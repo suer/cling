@@ -12,6 +12,7 @@
 		800C0BE119BDEFB500A4FBB0 /* FetchedResultsChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */; };
 		8010176419B9E28400AE3A0D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010176319B9E28400AE3A0D /* MainViewModel.swift */; };
 		803524221984FC9400F677F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803524211984FC9400F677F7 /* QuartzCore.framework */; };
+		8047CFEC19C1DDEE00E4AA3F /* URLEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047CFEB19C1DDEE00E4AA3F /* URLEditViewController.swift */; };
 		80AE1AB31983C23400524235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB21983C23400524235 /* AppDelegate.swift */; };
 		80AE1AB51983C23400524235 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB41983C23400524235 /* MainViewController.swift */; };
 		80AE1ABA1983C23400524235 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80AE1AB91983C23400524235 /* Images.xcassets */; };
@@ -21,7 +22,6 @@
 		80AE1AD61983D2B300524235 /* cling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AD41983D2B300524235 /* cling.xcdatamodeld */; };
 		80AE1ADA1983D30C00524235 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AD91983D30C00524235 /* Page.m */; };
 		80AE1ADC1983D34200524235 /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1ADB1983D34200524235 /* PageWrapper.swift */; };
-		80AE1ADE1983EBE400524235 /* EditableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1ADD1983EBE400524235 /* EditableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +39,7 @@
 		800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsChange.swift; sourceTree = "<group>"; };
 		8010176319B9E28400AE3A0D /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		803524211984FC9400F677F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8047CFEB19C1DDEE00E4AA3F /* URLEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEditViewController.swift; sourceTree = "<group>"; };
 		80AE1AAD1983C23400524235 /* cling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AE1AB11983C23400524235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80AE1AB21983C23400524235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		80AE1AD81983D30C00524235 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Page.h; path = Model/Page.h; sourceTree = "<group>"; };
 		80AE1AD91983D30C00524235 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Page.m; path = Model/Page.m; sourceTree = "<group>"; };
 		80AE1ADB1983D34200524235 /* PageWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageWrapper.swift; path = Model/PageWrapper.swift; sourceTree = "<group>"; };
-		80AE1ADD1983EBE400524235 /* EditableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableViewCell.swift; sourceTree = "<group>"; };
 		8A4AAD2E7C414C0FBBA8288D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF49EB4FC6804A17936DAD28 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,7 +113,7 @@
 				800C0BDE19BDE7BD00A4FBB0 /* PreferenceViewModel.swift */,
 				800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */,
 				80AE1AD11983CED300524235 /* ViewControllers.swift */,
-				80AE1ADD1983EBE400524235 /* EditableViewCell.swift */,
+				8047CFEB19C1DDEE00E4AA3F /* URLEditViewController.swift */,
 			);
 			path = cling;
 			sourceTree = "<group>";
@@ -302,9 +302,9 @@
 				80AE1AB51983C23400524235 /* MainViewController.swift in Sources */,
 				80AE1AD61983D2B300524235 /* cling.xcdatamodeld in Sources */,
 				80AE1ADC1983D34200524235 /* PageWrapper.swift in Sources */,
+				8047CFEC19C1DDEE00E4AA3F /* URLEditViewController.swift in Sources */,
 				800C0BDF19BDE7BE00A4FBB0 /* PreferenceViewModel.swift in Sources */,
 				80AE1AD21983CED300524235 /* ViewControllers.swift in Sources */,
-				80AE1ADE1983EBE400524235 /* EditableViewCell.swift in Sources */,
 				80AE1AB31983C23400524235 /* AppDelegate.swift in Sources */,
 				8010176419B9E28400AE3A0D /* MainViewModel.swift in Sources */,
 			);
