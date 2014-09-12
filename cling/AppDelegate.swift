@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
-        let navigationController = UINavigationController(rootViewController: ViewControllers().mainViewController)
+        let navigationController = UINavigationController(rootViewController: ViewControllers.sharedInstance.mainViewController)
         window!.addSubview(navigationController.view)
         window!.rootViewController = navigationController
         return true
