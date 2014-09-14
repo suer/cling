@@ -32,7 +32,8 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     private func setupTabBar() {
-        editButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: nil, action: nil)
+        editButton = UIBarButtonItem()
+        editButton!.title = "Edit"
         editButton!.rac_command = RACCommand(signalBlock: {
             obj in
             self.tableView!.setEditing(!self.tableView!.editing, animated: true)
@@ -48,13 +49,14 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         navigationItem.rightBarButtonItem = editButton
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController!.toolbarHidden = false
+    }
+
     private func setupTableView() {
-        let tableViewRect = CGRectMake(
-            0,
-            0,
-            view.bounds.width,
-            view.bounds.height - 44)
-        tableView = UITableView(frame: tableViewRect)
+        tableView = UITableView(frame: view.bounds)
+        tableView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
         tableView!.delegate = self
         tableView!.dataSource = self
         tableView!.setEditing(false, animated: true)
@@ -83,9 +85,6 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     private func setupToolBar() {
-        let toolbar = UIToolbar(frame: CGRectMake(0, view.bounds.size.height - 44, view.bounds.width, 44))
-        view.addSubview(toolbar)
-
         addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: nil, action: nil)
         addButton!.rac_command = RACCommand(signalBlock: {
             obj in
@@ -95,7 +94,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
 
         let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
 
-        toolbar.items = [space, addButton!]
+        self.toolbarItems = [space, addButton!]
     }
 
     private func presentURLEditViewController(indexPath: NSIndexPath?) {

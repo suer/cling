@@ -8,6 +8,7 @@ class BufferedWebView: UIView, UIWebViewDelegate {
         super.init(frame: frame)
         for var i = 0; i < 2; i++ {
             let webView = UIWebView(frame: frame)
+            webView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
             webView.delegate = self
             webViews.append(webView)
         }

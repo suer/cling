@@ -35,6 +35,7 @@ class MainViewController: UIViewController {
             return
         }
         bufferedWebView = BufferedWebView(frame: view.bounds)
+        bufferedWebView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
         view.addSubview(bufferedWebView!)
     }
 
