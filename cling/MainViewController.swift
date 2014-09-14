@@ -9,6 +9,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Cling"
+        edgesForExtendedLayout = UIRectEdge.None
+        automaticallyAdjustsScrollViewInsets = false
 #if arch(i386) || arch(x86_64)
         FLEXManager.sharedManager().showExplorer()
 #endif
@@ -32,7 +34,7 @@ class MainViewController: UIViewController {
         if (bufferedWebView != nil) {
             return
         }
-        bufferedWebView = BufferedWebView(frame: view.frame, urls: viewModel.urls)
+        bufferedWebView = BufferedWebView(frame: view.bounds, urls: viewModel.urls)
         view.addSubview(bufferedWebView!)
 
         viewModel.rac_valuesForKeyPath("urls", observer: viewModel).subscribeNext({

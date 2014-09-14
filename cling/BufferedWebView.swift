@@ -8,7 +8,6 @@ class BufferedWebView: UIView, UIWebViewDelegate {
         for var i = 0; i < 2; i++ {
             let webView = UIWebView(frame: frame)
             webView.delegate = self
-            webView.scalesPageToFit = true
             webViews.append(webView)
         }
         reset(urls)
