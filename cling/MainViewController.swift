@@ -19,6 +19,8 @@ class MainViewController: UIViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController!.toolbarHidden = true
         bufferedWebView!.loadUrls()
         restartTimer()
     }
