@@ -5,6 +5,8 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     let viewModel = PreferenceViewModel()
     var tableView: UITableView?
     let urlEditViewController: URLEditViewController
+    var editButton: UIBarButtonItem?
+    var addButton: UIBarButtonItem?
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         self.urlEditViewController = URLEditViewController(preferenceViewModel: self.viewModel)
@@ -26,34 +28,24 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         setupTabBar()
         setupTableView()
         setupHandler()
+        setupToolBar()
     }
 
     private func setupTabBar() {
-        let addButton = UIBarButtonItem()
-        addButton.style = UIBarButtonItemStyle.Plain
-        addButton.title = "Add"
-        addButton.rac_command = RACCommand(signalBlock: {
-            obj in
-            self.presentURLEditViewController(nil)
-            return RACSignal.empty()
-        })
-
-        let editButton = UIBarButtonItem()
-        editButton.style = UIBarButtonItemStyle.Plain
-        editButton.title = "Edit"
-        editButton.rac_command = RACCommand(signalBlock: {
+        editButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: nil, action: nil)
+        editButton!.rac_command = RACCommand(signalBlock: {
             obj in
             self.tableView!.setEditing(!self.tableView!.editing, animated: true)
-            addButton.enabled = !self.tableView!.editing
+            self.addButton!.enabled = !self.tableView!.editing
             if (self.tableView!.editing) {
-                editButton.title = "Finish"
+                self.editButton!.title = "Finish"
             } else {
-                editButton.title = "Edit"
+                self.editButton!.title = "Edit"
             }
             return RACSignal.empty()
         })
 
-        navigationItem.rightBarButtonItems = [addButton, editButton]
+        navigationItem.rightBarButtonItem = editButton
     }
 
     private func setupTableView() {
@@ -61,7 +53,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
             0,
             0,
             view.bounds.width,
-            view.bounds.height)
+            view.bounds.height - 44)
         tableView = UITableView(frame: tableViewRect)
         tableView!.delegate = self
         tableView!.dataSource = self
@@ -88,6 +80,22 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
         })
+    }
+
+    private func setupToolBar() {
+        let toolbar = UIToolbar(frame: CGRectMake(0, view.bounds.size.height - 44, view.bounds.width, 44))
+        view.addSubview(toolbar)
+
+        addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: nil, action: nil)
+        addButton!.rac_command = RACCommand(signalBlock: {
+            obj in
+            self.presentURLEditViewController(nil)
+            return RACSignal.empty()
+        })
+
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+
+        toolbar.items = [space, addButton!]
     }
 
     private func presentURLEditViewController(indexPath: NSIndexPath?) {
@@ -125,11 +133,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         println(toIndexPath.row)
         viewModel.movePage(fromIndexPath, toIndexPath: toIndexPath)
     }
-/*
-    func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.Delete
-    }
-*/
+
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             viewModel.deletePage(indexPath)
