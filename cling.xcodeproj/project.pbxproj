@@ -22,6 +22,7 @@
 		80AE1AD01983CE5100524235 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1ACF1983CE5100524235 /* PreferenceViewController.swift */; };
 		80AE1AD21983CED300524235 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AD11983CED300524235 /* ViewControllers.swift */; };
 		80AE1AD61983D2B300524235 /* cling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AD41983D2B300524235 /* cling.xcdatamodeld */; };
+		80BFAEE219C4FC0000906999 /* BufferedWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFAEE119C4FC0000906999 /* BufferedWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		80AE1AD11983CED300524235 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		80AE1AD51983D2B300524235 /* cling.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cling.xcdatamodel; sourceTree = "<group>"; };
 		80AE1AD71983D30C00524235 /* cling-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cling-Bridging-Header.h"; sourceTree = "<group>"; };
+		80BFAEE119C4FC0000906999 /* BufferedWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedWebView.swift; sourceTree = "<group>"; };
 		8A4AAD2E7C414C0FBBA8288D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF49EB4FC6804A17936DAD28 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				80AE1AB21983C23400524235 /* AppDelegate.swift */,
 				80AE1AB41983C23400524235 /* MainViewController.swift */,
 				8010176319B9E28400AE3A0D /* MainViewModel.swift */,
+				80BFAEE119C4FC0000906999 /* BufferedWebView.swift */,
 				80AE1AB91983C23400524235 /* Images.xcassets */,
 				80AE1AB01983C23400524235 /* Supporting Files */,
 				80AE1ACF1983CE5100524235 /* PreferenceViewController.swift */,
@@ -304,6 +307,7 @@
 				80AE1AD61983D2B300524235 /* cling.xcdatamodeld in Sources */,
 				8047CFEC19C1DDEE00E4AA3F /* URLEditViewController.swift in Sources */,
 				800C0BDF19BDE7BE00A4FBB0 /* PreferenceViewModel.swift in Sources */,
+				80BFAEE219C4FC0000906999 /* BufferedWebView.swift in Sources */,
 				80AE1AD21983CED300524235 /* ViewControllers.swift in Sources */,
 				80AE1AB31983C23400524235 /* AppDelegate.swift in Sources */,
 				8010176419B9E28400AE3A0D /* MainViewModel.swift in Sources */,

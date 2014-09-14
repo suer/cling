@@ -2,8 +2,8 @@ import UIKit
 import QuartzCore
 
 class MainViewController: UIViewController {
-    private let rotationTime = 60.0
-    var webView : UIWebView?
+    private let rotationTime = 5.0
+    var bufferedWebView : BufferedWebView?
     var viewModel = MainViewModel()
     let cancelSubject = RACSubject()
     override func viewDidLoad() {
@@ -16,8 +16,8 @@ class MainViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         loadTabBar()
+        viewModel.loadUrls()
         loadWebView()
-        viewModel.reset()
         restartTimer()
     }
 
@@ -29,18 +29,15 @@ class MainViewController: UIViewController {
     }
     
     func loadWebView() {
-        if (webView != nil) {
+        if (bufferedWebView != nil) {
             return
         }
-        webView = UIWebView(frame: CGRectMake(
-            0,
-            0,
-            view.bounds.width,
-            view.bounds.height))
-        view.addSubview(webView!)
-        viewModel.rac_valuesForKeyPath("url", observer: viewModel).subscribeNext({
-            url in
-            self.webView?.loadRequest(NSURLRequest(URL: NSURL(string: url as String)))
+        bufferedWebView = BufferedWebView(frame: view.frame, urls: viewModel.urls)
+        view.addSubview(bufferedWebView!)
+
+        viewModel.rac_valuesForKeyPath("urls", observer: viewModel).subscribeNext({
+            urls in
+            self.bufferedWebView!.reset(urls as [String])
             return
         })
 
@@ -51,25 +48,16 @@ class MainViewController: UIViewController {
     }
 
     func nextButtonTapped(sender: AnyObject) {
-        flip()
+        bufferedWebView!.flip()
         restartTimer()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    private func flip() {
-        viewModel.increment()
-
-        UIView.beginAnimations("flip", context: nil)
-        UIView.setAnimationDuration(3.0)
-        UIView.setAnimationTransition(UIViewAnimationTransition.FlipFromLeft, forView: webView!, cache: false)
-        UIView.commitAnimations()
-    }
 
     private func startTimer() {
-        RACSignal.interval(rotationTime, onScheduler: RACScheduler.mainThreadScheduler()).takeUntil(cancelSubject).subscribeNext({obj in self.flip()})
+        RACSignal.interval(rotationTime, onScheduler: RACScheduler.mainThreadScheduler()).takeUntil(cancelSubject).subscribeNext({obj in self.bufferedWebView!.flip()})
     }
 
     private func stopTimer() {
