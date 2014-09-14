@@ -34,10 +34,18 @@ class BufferedWebView: UIView, UIWebViewDelegate {
     }
 
     func flip() {
-        activeWebViewIndex = (activeWebViewIndex + 1) % 2
-        bringSubviewToFront(webViews[activeWebViewIndex])
-        selectedUrlIndex = (selectedUrlIndex + 1) % urls.count
-        webViews[(activeWebViewIndex + 1) % 2].loadRequest(NSURLRequest(URL: NSURL(string: urls[(selectedUrlIndex + 1) % urls.count])))
+        dispatch_async(dispatch_get_main_queue(), {
+            UIView.animateWithDuration(1.0, animations: {
+                self.webViews[self.activeWebViewIndex].frame = CGRectMake(self.frame.width, 0, self.frame.width, self.frame.height)
+                }, completion: {
+                    _ in
+                    self.activeWebViewIndex = (self.activeWebViewIndex + 1) % 2
+                    self.bringSubviewToFront(self.webViews[self.activeWebViewIndex])
+                    self.selectedUrlIndex = (self.selectedUrlIndex + 1) % self.urls.count
+                    self.webViews[(self.activeWebViewIndex + 1) % 2].loadRequest(NSURLRequest(URL: NSURL(string: self.urls[(self.selectedUrlIndex + 1) % self.urls.count])))
+                    self.webViews[(self.activeWebViewIndex + 1) % 2].frame = CGRectMake(0, 0, self.frame.width, self.frame.height)
+            })
+        })
     }
 
     func webViewDidStartLoad(webView: UIWebView) {

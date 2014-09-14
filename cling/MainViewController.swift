@@ -2,7 +2,7 @@ import UIKit
 import QuartzCore
 
 class MainViewController: UIViewController {
-    private let rotationTime = 5.0
+    private let rotationTime = 60.0
     var bufferedWebView : BufferedWebView?
     var viewModel = MainViewModel()
     let cancelSubject = RACSubject()
