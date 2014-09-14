@@ -4,22 +4,22 @@ import QuartzCore
 class MainViewController: UIViewController {
     private let rotationTime = 60.0
     var bufferedWebView : BufferedWebView?
-    var viewModel = MainViewModel()
     let cancelSubject = RACSubject()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Cling"
         edgesForExtendedLayout = UIRectEdge.None
         automaticallyAdjustsScrollViewInsets = false
+        loadTabBar()
+        loadWebView()
+
 #if arch(i386) || arch(x86_64)
         FLEXManager.sharedManager().showExplorer()
 #endif
     }
 
     override func viewWillAppear(animated: Bool) {
-        loadTabBar()
-        viewModel.loadUrls()
-        loadWebView()
+        bufferedWebView!.loadUrls()
         restartTimer()
     }
 
@@ -34,15 +34,8 @@ class MainViewController: UIViewController {
         if (bufferedWebView != nil) {
             return
         }
-        bufferedWebView = BufferedWebView(frame: view.bounds, urls: viewModel.urls)
+        bufferedWebView = BufferedWebView(frame: view.bounds)
         view.addSubview(bufferedWebView!)
-
-        viewModel.rac_valuesForKeyPath("urls", observer: viewModel).subscribeNext({
-            urls in
-            self.bufferedWebView!.reset(urls as [String])
-            return
-        })
-
     }
 
     func preferenceButtonTapped(sender: AnyObject) {
