@@ -1,17 +1,17 @@
 class URLEditViewController: UIViewController {
-    let preferenceViewModel: PreferenceViewModel
+    let viewModel: URLPreferenceViewModel
     var urlTextView: UITextView?
     var indexPath: NSIndexPath?
     var saveButton: UIBarButtonItem?
 
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, preferenceViewModel: PreferenceViewModel) {
-        self.preferenceViewModel = preferenceViewModel
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, viewModel: URLPreferenceViewModel) {
+        self.viewModel = viewModel
 
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    convenience init(preferenceViewModel: PreferenceViewModel) {
-        self.init(nibName: nil, bundle: nil, preferenceViewModel: preferenceViewModel)
+    convenience init(viewModel: URLPreferenceViewModel) {
+        self.init(nibName: nil, bundle: nil, viewModel: viewModel)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -30,7 +30,7 @@ class URLEditViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         var url = ""
         if (indexPath != nil) {
-            let page = preferenceViewModel.pageAtIndexPath(indexPath!)
+            let page = viewModel.pageAtIndexPath(indexPath!)
             url = page?.url ?? ""
         }
         urlTextView!.text = url
@@ -59,9 +59,9 @@ class URLEditViewController: UIViewController {
         saveButton!.rac_command = RACCommand(signalBlock: {
             input in
             if self.indexPath == nil {
-                self.preferenceViewModel.addPage(self.urlTextView!.text)
+                self.viewModel.addPage(self.urlTextView!.text)
             } else {
-                self.preferenceViewModel.savePage(self.urlTextView!.text, indexPath: self.indexPath!)
+                self.viewModel.savePage(self.urlTextView!.text, indexPath: self.indexPath!)
             }
 
             self.dismissViewControllerAnimated(true, completion: nil)

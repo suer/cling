@@ -32,4 +32,14 @@ class ViewControllers {
             return _preferenceViewController!
         }
     }
+    
+    private var _urlPreferenceViewController: URLPreferenceViewController?
+    var urlPreferenceViewController: URLPreferenceViewController {
+        get {
+            if (_urlPreferenceViewController == nil) {
+                _urlPreferenceViewController = URLPreferenceViewController()
+            }
+            return _urlPreferenceViewController!
+        }
+    }
 }

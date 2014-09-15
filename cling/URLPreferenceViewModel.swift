@@ -1,4 +1,4 @@
-class PreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
+class URLPreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
     let itemChangedSignal: RACSignal = RACSubject()
     let fetchedResultsController: NSFetchedResultsController
     var selectedCellIndexPath: NSIndexPath?
@@ -28,7 +28,7 @@ class PreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
             PageWrapper(page: page).updateUrl(url)
         }
     }
-    
+
     func deletePage(indexPath: NSIndexPath) {
         if let page = pageAtIndexPath(indexPath) {
             PageWrapper(page: page).delete()
