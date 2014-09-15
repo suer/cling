@@ -34,7 +34,6 @@ class URLEditViewController: UIViewController, UITextViewDelegate {
             url = page?.url ?? ""
         }
         urlTextView!.text = url
-
         urlTextView!.becomeFirstResponder()
         super.viewWillAppear(animated)
     }
@@ -71,6 +70,7 @@ class URLEditViewController: UIViewController, UITextViewDelegate {
         }
         self.urlTextView = UITextView(frame: CGRectMake(0, 0,  view.frame.width, view.frame.height))
         self.urlTextView!.keyboardType = UIKeyboardType.URL
+        urlTextView!.font = UIFont.systemFontOfSize(18)
         self.urlTextView!.delegate = self
         view.addSubview(urlTextView!)
         urlTextView!.rac_textSignal().subscribeNext({
