@@ -56,6 +56,8 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         if (indexPath.row == 0) {
             self.navigationController!.pushViewController(ViewControllers.sharedInstance.urlPreferenceViewController, animated: true)
+        } else if (indexPath.row == 1) {
+            self.navigationController!.pushViewController(ViewControllers.sharedInstance.intervalPreferenceViewController, animated: true)
         }
     }
 }

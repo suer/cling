@@ -42,4 +42,14 @@ class ViewControllers {
             return _urlPreferenceViewController!
         }
     }
+
+    private var _intervaPreferenceViewController: IntervalPreferenceViewController?
+    var intervalPreferenceViewController: IntervalPreferenceViewController {
+        get {
+            if (_intervaPreferenceViewController == nil) {
+                _intervaPreferenceViewController = IntervalPreferenceViewController()
+            }
+            return _intervaPreferenceViewController!
+        }
+    }
 }
