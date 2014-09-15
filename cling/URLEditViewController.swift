@@ -1,4 +1,4 @@
-class URLEditViewController: UIViewController {
+class URLEditViewController: UIViewController, UITextViewDelegate {
     let viewModel: URLPreferenceViewModel
     var urlTextView: UITextView?
     var indexPath: NSIndexPath?
@@ -58,13 +58,7 @@ class URLEditViewController: UIViewController {
         saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: nil, action: nil)
         saveButton!.rac_command = RACCommand(signalBlock: {
             input in
-            if self.indexPath == nil {
-                self.viewModel.addPage(self.urlTextView!.text)
-            } else {
-                self.viewModel.savePage(self.urlTextView!.text, indexPath: self.indexPath!)
-            }
-
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.saveAndDismiss()
             return RACSignal.empty()
         })
         navigationItem.rightBarButtonItem = saveButton
@@ -77,7 +71,7 @@ class URLEditViewController: UIViewController {
         }
         self.urlTextView = UITextView(frame: CGRectMake(0, 0,  view.frame.width, view.frame.height))
         self.urlTextView!.keyboardType = UIKeyboardType.URL
-
+        self.urlTextView!.delegate = self
         view.addSubview(urlTextView!)
         urlTextView!.rac_textSignal().subscribeNext({
             input in
@@ -85,6 +79,22 @@ class URLEditViewController: UIViewController {
                 self.saveButton!.enabled = !self.urlTextView!.text.isEmpty
             }
         })
+    }
 
+    private func saveAndDismiss() {
+        if self.indexPath == nil {
+            self.viewModel.addPage(self.urlTextView!.text)
+        } else {
+            self.viewModel.savePage(self.urlTextView!.text, indexPath: self.indexPath!)
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        let range = text.rangeOfCharacterFromSet(NSCharacterSet.newlineCharacterSet())
+        if (range != nil) {
+            saveAndDismiss()
+        }
+        return true
     }
 }
