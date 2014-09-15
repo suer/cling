@@ -5,10 +5,12 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.title = "Preference"
+        view.backgroundColor = UIColor.whiteColor()
     }
 
-    override init() {
-        super.init()
+    convenience override init() {
+        self.init(nibName: nil, bundle: nil)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -28,7 +30,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     private func setupTableView() {
-        tableView = UITableView(frame: view.bounds)
+        tableView = UITableView(frame: view.bounds, style: UITableViewStyle.Grouped)
         tableView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
         tableView!.delegate = self
         tableView!.dataSource = self
@@ -48,9 +50,9 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
         if (indexPath.section == 0) {
             if (indexPath.row == 0) {
-                cell.textLabel!.text = "URL"
+                cell.textLabel!.text = "URL List"
             } else if (indexPath.row == 1) {
-                cell.textLabel!.text = "Interval"
+                cell.textLabel!.text = "Rotation Interval"
                 cell.detailTextLabel!.text = String(ViewControllers.sharedInstance.intervalPreferenceViewController.viewModel.rotationInterval) + " sec"
             }
         }

@@ -4,6 +4,8 @@ class IntervalPreferenceViewController: UIViewController {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.title = "Rotation Interval"
+        view.backgroundColor = UIColor.whiteColor()
     }
     
     convenience override init() {
@@ -16,7 +18,7 @@ class IntervalPreferenceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        intervalTextField = UITextField(frame: CGRectMake(20, 100, view.bounds.width - 40, 44))
+        intervalTextField = UITextField(frame: CGRectMake(20, 100, 100, 44))
         intervalTextField!.autoresizingMask = UIViewAutoresizing.None
         intervalTextField!.placeholder = "Rotation Interval(sec)"
         intervalTextField!.borderStyle = UITextBorderStyle.RoundedRect
@@ -39,8 +41,7 @@ class IntervalPreferenceViewController: UIViewController {
             attribute: NSLayoutAttribute.Left,
             multiplier: 1.0,
             constant: 0.0)
-        view.addConstraints([layoutTop, layoutLeft])
-  
+            view.addConstraints([layoutTop, layoutLeft])
 
         intervalTextField!.rac_textSignal().subscribeNext({
             text in

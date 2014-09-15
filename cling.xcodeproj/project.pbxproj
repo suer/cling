@@ -18,6 +18,8 @@
 		806EA20919C65E8800264ADB /* URLPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA20819C65E8700264ADB /* URLPreferenceViewController.swift */; };
 		806EA20B19C6688A00264ADB /* IntervalPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA20A19C6688A00264ADB /* IntervalPreferenceViewController.swift */; };
 		806EA20D19C6C9BA00264ADB /* IntervalPreferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA20C19C6C9BA00264ADB /* IntervalPreferenceViewModel.swift */; };
+		806EA21119C7352A00264ADB /* preference-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 806EA20F19C7352A00264ADB /* preference-button.png */; };
+		806EA21219C7352A00264ADB /* preference-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 806EA21019C7352A00264ADB /* preference-button@2x.png */; };
 		80AE1AB31983C23400524235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB21983C23400524235 /* AppDelegate.swift */; };
 		80AE1AB51983C23400524235 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AE1AB41983C23400524235 /* MainViewController.swift */; };
 		80AE1ABA1983C23400524235 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80AE1AB91983C23400524235 /* Images.xcassets */; };
@@ -50,6 +52,8 @@
 		806EA20819C65E8700264ADB /* URLPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLPreferenceViewController.swift; sourceTree = "<group>"; };
 		806EA20A19C6688A00264ADB /* IntervalPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalPreferenceViewController.swift; sourceTree = "<group>"; };
 		806EA20C19C6C9BA00264ADB /* IntervalPreferenceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalPreferenceViewModel.swift; sourceTree = "<group>"; };
+		806EA20F19C7352A00264ADB /* preference-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preference-button.png"; path = "Images/preference-button.png"; sourceTree = "<group>"; };
+		806EA21019C7352A00264ADB /* preference-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preference-button@2x.png"; path = "Images/preference-button@2x.png"; sourceTree = "<group>"; };
 		80AE1AAD1983C23400524235 /* cling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AE1AB11983C23400524235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80AE1AB21983C23400524235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		806EA20E19C7351000264ADB /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				806EA20F19C7352A00264ADB /* preference-button.png */,
+				806EA21019C7352A00264ADB /* preference-button@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		80AE1AA41983C23400524235 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +123,7 @@
 		80AE1AAF1983C23400524235 /* cling */ = {
 			isa = PBXGroup;
 			children = (
+				806EA20E19C7351000264ADB /* Images */,
 				80AE1AD71983D30C00524235 /* cling-Bridging-Header.h */,
 				80AE1AD31983D28700524235 /* Model */,
 				80AE1AB21983C23400524235 /* AppDelegate.swift */,
@@ -258,7 +272,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				806EA21119C7352A00264ADB /* preference-button.png in Resources */,
 				80AE1ABA1983C23400524235 /* Images.xcassets in Resources */,
+				806EA21219C7352A00264ADB /* preference-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

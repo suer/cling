@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
     }
 
     func loadTabBar() {
-        let preferenceButton = UIBarButtonItem(title: "Preference", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("preferenceButtonTapped:"))
+        let preferenceButton = UIBarButtonItem(image: UIImage(named: "preference-button"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("preferenceButtonTapped:"))
         navigationItem.rightBarButtonItem = preferenceButton
         let nextButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("nextButtonTapped:"))
         navigationItem.leftBarButtonItem = nextButton

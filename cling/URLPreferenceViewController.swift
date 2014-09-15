@@ -22,7 +22,7 @@ class URLPreferenceViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "URL Preference"
+        self.title = "URL List"
         setupTabBar()
         setupTableView()
         setupHandler()
