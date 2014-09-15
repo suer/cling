@@ -20,6 +20,13 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         setupTableView()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if (tableView != nil) {
+            tableView!.reloadData()
+        }
+    }
+
     private func setupTableView() {
         tableView = UITableView(frame: view.bounds)
         tableView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
@@ -38,12 +45,13 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
         if (indexPath.section == 0) {
             if (indexPath.row == 0) {
                 cell.textLabel!.text = "URL"
             } else if (indexPath.row == 1) {
                 cell.textLabel!.text = "Interval"
+                cell.detailTextLabel!.text = String(ViewControllers.sharedInstance.intervalPreferenceViewController.viewModel.rotationInterval) + " sec"
             }
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator

@@ -3,7 +3,6 @@ import QuartzCore
 
 class MainViewController: UIViewController {
     private var rotationInterval = 60.0
-    private let intervalPreferenceViewModel = IntervalPreferenceViewModel()
     var bufferedWebView : BufferedWebView?
     let cancelSubject = RACSubject()
     override func viewDidLoad() {
@@ -23,12 +22,13 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController!.toolbarHidden = true
         bufferedWebView!.loadUrls()
-        intervalPreferenceViewModel.rac_valuesForKeyPath("rotationInterval", observer: intervalPreferenceViewModel).subscribeNext({
+        let viewModel = ViewControllers.sharedInstance.intervalPreferenceViewController.viewModel
+        viewModel.rac_valuesForKeyPath("rotationInterval", observer: viewModel).subscribeNext({
             interval in
             self.rotationInterval = Double(interval as Int)
             return
         })
-        intervalPreferenceViewModel.loadRotationInterval()
+        viewModel.loadRotationInterval()
         restartTimer()
     }
 
