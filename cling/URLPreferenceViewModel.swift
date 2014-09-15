@@ -19,13 +19,13 @@ class URLPreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
     }
 
     func addPage(url: String) {
-        PageWrapper.createRecord(url)
+        PageWrapper.createRecord(trimURL(url))
         self.reloadFetchedResultsController()
     }
 
     func savePage(url: String, indexPath: NSIndexPath) {
         if let page = pageAtIndexPath(indexPath) {
-            PageWrapper(page: page).updateUrl(url)
+            PageWrapper(page: page).updateUrl(trimURL(url))
         }
     }
 
@@ -49,5 +49,9 @@ class URLPreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
 
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         (itemChangedSignal as RACSubscriber).sendNext(FetchedResultsChange(indexPath: indexPath, newIndexPath: newIndexPath, type: type))
+    }
+
+    private func trimURL(url: String) -> String {
+        return url.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
 }

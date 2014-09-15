@@ -76,6 +76,8 @@ class URLEditViewController: UIViewController {
             return
         }
         self.urlTextView = UITextView(frame: CGRectMake(0, 0,  view.frame.width, view.frame.height))
+        self.urlTextView!.keyboardType = UIKeyboardType.URL
+
         view.addSubview(urlTextView!)
         urlTextView!.rac_textSignal().subscribeNext({
             input in
@@ -83,5 +85,6 @@ class URLEditViewController: UIViewController {
                 self.saveButton!.enabled = !self.urlTextView!.text.isEmpty
             }
         })
+
     }
 }
