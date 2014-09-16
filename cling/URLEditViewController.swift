@@ -91,8 +91,7 @@ class URLEditViewController: UIViewController, UITextViewDelegate {
     }
 
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        let range = text.rangeOfCharacterFromSet(NSCharacterSet.newlineCharacterSet())
-        if (range != nil) {
+        if (text.rangeOfCharacterFromSet(NSCharacterSet.newlineCharacterSet()) != nil) {
             saveAndDismiss()
         }
         return true
