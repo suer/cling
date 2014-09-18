@@ -80,6 +80,11 @@ class URLPreferenceViewController: UIViewController, UITableViewDelegate, UITabl
                 }
             }
         })
+
+        viewModel.contentChangedSignal.subscribeNext({
+            obj in
+            self.tableView!.reloadData()
+        })
     }
     
     private func setupToolBar() {
@@ -126,8 +131,6 @@ class URLPreferenceViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        println(fromIndexPath.row)
-        println(toIndexPath.row)
         viewModel.movePage(fromIndexPath, toIndexPath: toIndexPath)
     }
     

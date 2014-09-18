@@ -1,5 +1,6 @@
 class URLPreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
     let itemChangedSignal: RACSignal = RACSubject()
+    let contentChangedSignal: RACSignal = RACSubject()
     let fetchedResultsController: NSFetchedResultsController
     var selectedCellIndexPath: NSIndexPath?
 
@@ -49,6 +50,10 @@ class URLPreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
 
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         (itemChangedSignal as RACSubscriber).sendNext(FetchedResultsChange(indexPath: indexPath, newIndexPath: newIndexPath, type: type))
+    }
+
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        (contentChangedSignal as RACSubscriber).sendNext("")
     }
 
     private func trimURL(url: String) -> String {
