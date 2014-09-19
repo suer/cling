@@ -82,6 +82,15 @@ class URLEditViewController: UIViewController, UITextViewDelegate {
     }
 
     private func saveAndDismiss() {
+        let url = NSURL(string: self.urlTextView!.text)
+        if (url.scheme == nil || url.host == nil) {
+            UIAlertView(
+                title: "invalid URL",
+                message: "URL \"\(self.urlTextView!.text)\" is invalid",
+                delegate: nil,
+                cancelButtonTitle: "OK").show()
+            return
+        }
         if self.indexPath == nil {
             self.viewModel.addPage(self.urlTextView!.text)
         } else {
