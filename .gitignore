@@ -5,3 +5,4 @@ Pods/
 preference.plist
 *.ipa
 certs/
+cling/font/fontawesome-webfont.ttf

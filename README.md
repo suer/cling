@@ -10,6 +10,11 @@ Build
 * Xcode 6
 * CocoaPods 0.33.1 or later
 
+### Copy font into project
+
+Download [Font Awesome](http://fortawesome.github.io/Font-Awesome/),
+then copy fontawesome-webfont.ttf to cling/font/ directory.
+
 ### Build
 
     $ pod install
