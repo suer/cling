@@ -22,7 +22,7 @@ class URLPreferenceViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "URL List"
+        self.title = NSLocalizedString("URL List", comment: "")
         setupTabBar()
         setupTableView()
         setupHandler()
@@ -31,15 +31,15 @@ class URLPreferenceViewController: UIViewController, UITableViewDelegate, UITabl
     
     private func setupTabBar() {
         editButton = UIBarButtonItem()
-        editButton!.title = "Edit"
+        editButton!.title = NSLocalizedString("Edit", comment: "")
         editButton!.rac_command = RACCommand(signalBlock: {
             obj in
             self.tableView!.setEditing(!self.tableView!.editing, animated: true)
             self.addButton!.enabled = !self.tableView!.editing
             if (self.tableView!.editing) {
-                self.editButton!.title = "Finish"
+                self.editButton!.title = NSLocalizedString("Finish", comment: "")
             } else {
-                self.editButton!.title = "Edit"
+                self.editButton!.title = NSLocalizedString("Edit", comment: "")
             }
             return RACSignal.empty()
         })

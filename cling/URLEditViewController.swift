@@ -20,7 +20,7 @@ class URLEditViewController: UIViewController, UITextViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Edit URL"
+        self.title = NSLocalizedString("Edit URL", comment: "")
         self.view.backgroundColor = UIColor.whiteColor()
         loadTextView()
         loadCancelButton()

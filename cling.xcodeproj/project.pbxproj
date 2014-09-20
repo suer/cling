@@ -15,6 +15,7 @@
 		8047CFEC19C1DDEE00E4AA3F /* URLEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047CFEB19C1DDEE00E4AA3F /* URLEditViewController.swift */; };
 		8047CFF119C20EF500E4AA3F /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 8047CFF019C20EF500E4AA3F /* Page.m */; };
 		8047CFF319C20F4C00E4AA3F /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047CFF219C20F4C00E4AA3F /* PageWrapper.swift */; };
+		805FB83719CDBFC300621E93 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 805FB83919CDBFC300621E93 /* Localizable.strings */; };
 		806EA20919C65E8800264ADB /* URLPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA20819C65E8700264ADB /* URLPreferenceViewController.swift */; };
 		806EA20B19C6688A00264ADB /* IntervalPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA20A19C6688A00264ADB /* IntervalPreferenceViewController.swift */; };
 		806EA20D19C6C9BA00264ADB /* IntervalPreferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806EA20C19C6C9BA00264ADB /* IntervalPreferenceViewModel.swift */; };
@@ -48,6 +49,8 @@
 		8047CFF019C20EF500E4AA3F /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Page.m; path = Model/Page.m; sourceTree = "<group>"; };
 		8047CFF219C20F4C00E4AA3F /* PageWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageWrapper.swift; path = Model/PageWrapper.swift; sourceTree = "<group>"; };
 		8047CFFA19CC6A5D00E4AA3F /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "font/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		805FB83819CDBFC300621E93 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		805FB83A19CDBFF900621E93 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		806EA20819C65E8700264ADB /* URLPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLPreferenceViewController.swift; sourceTree = "<group>"; };
 		806EA20A19C6688A00264ADB /* IntervalPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalPreferenceViewController.swift; sourceTree = "<group>"; };
 		806EA20C19C6C9BA00264ADB /* IntervalPreferenceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalPreferenceViewModel.swift; sourceTree = "<group>"; };
@@ -96,6 +99,14 @@
 			name = font;
 			sourceTree = "<group>";
 		};
+		805FB83219CDBF8C00621E93 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				805FB83919CDBFC300621E93 /* Localizable.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		80AE1AA41983C23400524235 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +130,7 @@
 		80AE1AAF1983C23400524235 /* cling */ = {
 			isa = PBXGroup;
 			children = (
+				805FB83219CDBF8C00621E93 /* Resources */,
 				8047CFF919CC6A4100E4AA3F /* font */,
 				80AE1AD71983D30C00524235 /* cling-Bridging-Header.h */,
 				80AE1AD31983D28700524235 /* Model */,
@@ -251,6 +263,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 80AE1AA41983C23400524235;
 			productRefGroup = 80AE1AAE1983C23400524235 /* Products */;
@@ -269,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80AE1ABA1983C23400524235 /* Images.xcassets in Resources */,
+				805FB83719CDBFC300621E93 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +368,18 @@
 			targetProxy = 80AE1AC01983C23400524235 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		805FB83919CDBFC300621E93 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				805FB83819CDBFC300621E93 /* en */,
+				805FB83A19CDBFF900621E93 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		80AE1AC71983C23400524235 /* Debug */ = {

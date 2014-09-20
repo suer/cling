@@ -5,7 +5,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.title = "Preference"
+        self.title = NSLocalizedString("Preference", comment: "")
         view.backgroundColor = UIColor.whiteColor()
     }
 
@@ -39,7 +39,7 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: NSInteger) -> NSString {
-        return "Settings"
+        return ""
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int  {
@@ -50,10 +50,10 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
         if (indexPath.section == 0) {
             if (indexPath.row == 0) {
-                cell.textLabel!.text = "URL List"
+                cell.textLabel!.text = NSLocalizedString("URL List", comment: "")
             } else if (indexPath.row == 1) {
-                cell.textLabel!.text = "Rotation Interval"
-                cell.detailTextLabel!.text = String(ViewControllers.sharedInstance.intervalPreferenceViewController.viewModel.rotationInterval) + " sec"
+                cell.textLabel!.text = NSLocalizedString("Rotation Interval", comment: "")
+                cell.detailTextLabel!.text = String(ViewControllers.sharedInstance.intervalPreferenceViewController.viewModel.rotationInterval) + " " + NSLocalizedString("sec", comment: "")
             }
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
