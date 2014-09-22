@@ -41,7 +41,7 @@ class IntervalPreferenceViewController: UIViewController {
             attribute: NSLayoutAttribute.Left,
             multiplier: 1.0,
             constant: 0.0)
-            view.addConstraints([layoutTop, layoutLeft])
+        view.addConstraints([layoutTop, layoutLeft])
 
         intervalTextField!.rac_textSignal().subscribeNext({
             text in
@@ -50,6 +50,11 @@ class IntervalPreferenceViewController: UIViewController {
                 self.viewModel.setRotationInterval(interval!)
             }
         })
+
+        let label = UILabel(frame: CGRectMake(130, 100, view.bounds.width - 130, 44))
+        label.text = NSLocalizedString("sec", comment: "")
+        view.addConstraints([layoutTop, layoutLeft])
+        view.addSubview(label)
     }
 
     override func viewWillAppear(animated: Bool) {
