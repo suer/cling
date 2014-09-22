@@ -7,7 +7,7 @@ class MainViewController: UIViewController {
     let cancelSubject = RACSubject()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Cling"
+        self.title = NSLocalizedString("Cling", comment: "")
         edgesForExtendedLayout = UIRectEdge.None
         automaticallyAdjustsScrollViewInsets = false
         loadTabBar()
