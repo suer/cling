@@ -10,10 +10,16 @@ class BufferedWebViewModel: NSObject {
     }
 
     func incrementSelectedIndex() {
+        if (urls.isEmpty) {
+            return
+        }
         selectedUrlIndex = (selectedUrlIndex + 1) % urls.count
     }
 
     func nextURL() -> String {
+        if (urls.isEmpty) {
+            return ""
+        }
         return urls[(selectedUrlIndex + 1) % urls.count]
     }
 }

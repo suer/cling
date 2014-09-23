@@ -11,6 +11,7 @@
 		800C0BDF19BDE7BE00A4FBB0 /* URLPreferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C0BDE19BDE7BD00A4FBB0 /* URLPreferenceViewModel.swift */; };
 		800C0BE119BDEFB500A4FBB0 /* FetchedResultsChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */; };
 		8010176419B9E28400AE3A0D /* BufferedWebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010176319B9E28400AE3A0D /* BufferedWebViewModel.swift */; };
+		802CAA4519D0FA610016F5B6 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8047CFFA19CC6A5D00E4AA3F /* fontawesome-webfont.ttf */; };
 		803524221984FC9400F677F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803524211984FC9400F677F7 /* QuartzCore.framework */; };
 		8047CFEC19C1DDEE00E4AA3F /* URLEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047CFEB19C1DDEE00E4AA3F /* URLEditViewController.swift */; };
 		8047CFF119C20EF500E4AA3F /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 8047CFF019C20EF500E4AA3F /* Page.m */; };
@@ -281,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802CAA4519D0FA610016F5B6 /* fontawesome-webfont.ttf in Resources */,
 				80AE1ABA1983C23400524235 /* Images.xcassets in Resources */,
 				805FB83719CDBFC300621E93 /* Localizable.strings in Resources */,
 			);
