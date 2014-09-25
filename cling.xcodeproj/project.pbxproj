@@ -11,6 +11,8 @@
 		800C0BDF19BDE7BE00A4FBB0 /* URLPreferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C0BDE19BDE7BD00A4FBB0 /* URLPreferenceViewModel.swift */; };
 		800C0BE119BDEFB500A4FBB0 /* FetchedResultsChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */; };
 		8010176419B9E28400AE3A0D /* BufferedWebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010176319B9E28400AE3A0D /* BufferedWebViewModel.swift */; };
+		8023A05219D47A8A009254EF /* ActionRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8023A05119D47A8A009254EF /* ActionRequestHandler.swift */; };
+		8023A05719D47A8A009254EF /* AddToClingActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8023A04D19D47A8A009254EF /* AddToClingActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		802CAA4519D0FA610016F5B6 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8047CFFA19CC6A5D00E4AA3F /* fontawesome-webfont.ttf */; };
 		803524221984FC9400F677F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803524211984FC9400F677F7 /* QuartzCore.framework */; };
 		8047CFEC19C1DDEE00E4AA3F /* URLEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047CFEB19C1DDEE00E4AA3F /* URLEditViewController.swift */; };
@@ -31,6 +33,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8023A05519D47A8A009254EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80AE1AA51983C23400524235 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8023A04C19D47A8A009254EF;
+			remoteInfo = AddToClingActionExtension;
+		};
+		8023A05819D47A8A009254EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80AE1AA51983C23400524235 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8023A04C19D47A8A009254EF;
+			remoteInfo = AddToClingActionExtension;
+		};
 		80AE1AC01983C23400524235 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80AE1AA51983C23400524235 /* Project object */;
@@ -40,10 +56,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8023A05D19D47A8A009254EF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8023A05719D47A8A009254EF /* AddToClingActionExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		800C0BDE19BDE7BD00A4FBB0 /* URLPreferenceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLPreferenceViewModel.swift; sourceTree = "<group>"; };
 		800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsChange.swift; sourceTree = "<group>"; };
 		8010176319B9E28400AE3A0D /* BufferedWebViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedWebViewModel.swift; sourceTree = "<group>"; };
+		8023A04D19D47A8A009254EF /* AddToClingActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AddToClingActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8023A05019D47A8A009254EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8023A05119D47A8A009254EF /* ActionRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRequestHandler.swift; sourceTree = "<group>"; };
+		8023A05E19D47B80009254EF /* cling.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cling.entitlements; sourceTree = "<group>"; };
+		8023A05F19D47D91009254EF /* AddToClingActionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AddToClingActionExtension.entitlements; sourceTree = "<group>"; };
 		803524211984FC9400F677F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8047CFEB19C1DDEE00E4AA3F /* URLEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEditViewController.swift; sourceTree = "<group>"; };
 		8047CFEF19C20EF500E4AA3F /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Page.h; path = Model/Page.h; sourceTree = "<group>"; };
@@ -73,6 +108,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8023A04A19D47A8A009254EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80AE1AAA1983C23400524235 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,6 +134,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8023A04E19D47A8A009254EF /* AddToClingActionExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8023A05F19D47D91009254EF /* AddToClingActionExtension.entitlements */,
+				8023A05119D47A8A009254EF /* ActionRequestHandler.swift */,
+				8023A04F19D47A8A009254EF /* Supporting Files */,
+			);
+			path = AddToClingActionExtension;
+			sourceTree = "<group>";
+		};
+		8023A04F19D47A8A009254EF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8023A05019D47A8A009254EF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		8047CFF919CC6A4100E4AA3F /* font */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +173,7 @@
 			children = (
 				80AE1AAF1983C23400524235 /* cling */,
 				80AE1AC21983C23400524235 /* clingTests */,
+				8023A04E19D47A8A009254EF /* AddToClingActionExtension */,
 				80AE1AAE1983C23400524235 /* Products */,
 				AF49EB4FC6804A17936DAD28 /* Pods.xcconfig */,
 				D4897137BEB649E194BF4D38 /* Frameworks */,
@@ -124,6 +185,7 @@
 			children = (
 				80AE1AAD1983C23400524235 /* cling.app */,
 				80AE1ABF1983C23400524235 /* clingTests.xctest */,
+				8023A04D19D47A8A009254EF /* AddToClingActionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,6 +193,7 @@
 		80AE1AAF1983C23400524235 /* cling */ = {
 			isa = PBXGroup;
 			children = (
+				8023A05E19D47B80009254EF /* cling.entitlements */,
 				805FB83219CDBF8C00621E93 /* Resources */,
 				8047CFF919CC6A4100E4AA3F /* font */,
 				80AE1AD71983D30C00524235 /* cling-Bridging-Header.h */,
@@ -201,6 +264,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8023A04C19D47A8A009254EF /* AddToClingActionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8023A05C19D47A8A009254EF /* Build configuration list for PBXNativeTarget "AddToClingActionExtension" */;
+			buildPhases = (
+				8023A04919D47A8A009254EF /* Sources */,
+				8023A04A19D47A8A009254EF /* Frameworks */,
+				8023A04B19D47A8A009254EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AddToClingActionExtension;
+			productName = AddToClingActionExtension;
+			productReference = 8023A04D19D47A8A009254EF /* AddToClingActionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		80AE1AAC1983C23400524235 /* cling */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 80AE1AC91983C23400524235 /* Build configuration list for PBXNativeTarget "cling" */;
@@ -210,10 +290,13 @@
 				80AE1AAA1983C23400524235 /* Frameworks */,
 				80AE1AAB1983C23400524235 /* Resources */,
 				4C84052109614836B49BEBF2 /* Copy Pods Resources */,
+				8023A05D19D47A8A009254EF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8023A05619D47A8A009254EF /* PBXTargetDependency */,
+				8023A05919D47A8A009254EF /* PBXTargetDependency */,
 			);
 			name = cling;
 			productName = cling;
@@ -247,9 +330,23 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = codefirst.org;
 				TargetAttributes = {
+					8023A04C19D47A8A009254EF = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = LG7S83GR74;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					80AE1AAC1983C23400524235 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = LG7S83GR74;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					80AE1ABE1983C23400524235 = {
 						CreatedOnToolsVersion = 6.0;
@@ -273,11 +370,19 @@
 			targets = (
 				80AE1AAC1983C23400524235 /* cling */,
 				80AE1ABE1983C23400524235 /* clingTests */,
+				8023A04C19D47A8A009254EF /* AddToClingActionExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8023A04B19D47A8A009254EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80AE1AAB1983C23400524235 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,6 +436,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8023A04919D47A8A009254EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8023A05219D47A8A009254EF /* ActionRequestHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80AE1AA91983C23400524235 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -364,6 +477,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8023A05619D47A8A009254EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8023A04C19D47A8A009254EF /* AddToClingActionExtension */;
+			targetProxy = 8023A05519D47A8A009254EF /* PBXContainerItemProxy */;
+		};
+		8023A05919D47A8A009254EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8023A04C19D47A8A009254EF /* AddToClingActionExtension */;
+			targetProxy = 8023A05819D47A8A009254EF /* PBXContainerItemProxy */;
+		};
 		80AE1AC11983C23400524235 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 80AE1AAC1983C23400524235 /* cling */;
@@ -384,6 +507,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8023A05A19D47A8A009254EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AddToClingActionExtension/AddToClingActionExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AddToClingActionExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8023A05B19D47A8A009254EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AddToClingActionExtension/AddToClingActionExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = AddToClingActionExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		80AE1AC71983C23400524235 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -470,11 +625,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cling/cling.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = cling/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "cling/cling-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -487,11 +645,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cling/cling.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = cling/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "cling/cling-Bridging-Header.h";
 			};
 			name = Release;
@@ -533,6 +694,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8023A05C19D47A8A009254EF /* Build configuration list for PBXNativeTarget "AddToClingActionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8023A05A19D47A8A009254EF /* Debug */,
+				8023A05B19D47A8A009254EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		80AE1AA81983C23400524235 /* Build configuration list for PBXProject "cling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -2,8 +2,11 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-                            
+    private let groupName = "group.org.codefirst.ClingExtension"
+    private let keyURLs = "urls"
+
     var window: UIWindow?
+
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         MagicalRecord.setupCoreDataStackWithStoreNamed("cling.sqlite3")
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -25,6 +28,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication!) {
+        let userDefaults = NSUserDefaults(suiteName: groupName)
+        var urls = userDefaults.arrayForKey(keyURLs)
+        if urls == nil {
+            urls = NSMutableArray()
+        }
+        for url in urls! {
+            let urlString = url as String
+            if !urlString.isEmpty {
+                PageWrapper.createRecord(url as String)
+            }
+        }
+        userDefaults.setObject(NSMutableArray(), forKey: keyURLs)
     }
 
     func applicationWillTerminate(application: UIApplication!) {
