@@ -15,6 +15,7 @@
 		8023A05719D47A8A009254EF /* AddToClingActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8023A04D19D47A8A009254EF /* AddToClingActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		802CAA4519D0FA610016F5B6 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8047CFFA19CC6A5D00E4AA3F /* fontawesome-webfont.ttf */; };
 		803524221984FC9400F677F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803524211984FC9400F677F7 /* QuartzCore.framework */; };
+		803A694619D746DA006C3699 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 803A694519D746DA006C3699 /* Images.xcassets */; };
 		8047CFEC19C1DDEE00E4AA3F /* URLEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047CFEB19C1DDEE00E4AA3F /* URLEditViewController.swift */; };
 		8047CFF119C20EF500E4AA3F /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 8047CFF019C20EF500E4AA3F /* Page.m */; };
 		8047CFF319C20F4C00E4AA3F /* PageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8047CFF219C20F4C00E4AA3F /* PageWrapper.swift */; };
@@ -80,6 +81,7 @@
 		8023A05E19D47B80009254EF /* cling.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cling.entitlements; sourceTree = "<group>"; };
 		8023A05F19D47D91009254EF /* AddToClingActionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AddToClingActionExtension.entitlements; sourceTree = "<group>"; };
 		803524211984FC9400F677F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		803A694519D746DA006C3699 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8047CFEB19C1DDEE00E4AA3F /* URLEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEditViewController.swift; sourceTree = "<group>"; };
 		8047CFEF19C20EF500E4AA3F /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Page.h; path = Model/Page.h; sourceTree = "<group>"; };
 		8047CFF019C20EF500E4AA3F /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Page.m; path = Model/Page.m; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				8023A05F19D47D91009254EF /* AddToClingActionExtension.entitlements */,
 				8023A05119D47A8A009254EF /* ActionRequestHandler.swift */,
 				8023A04F19D47A8A009254EF /* Supporting Files */,
+				803A694519D746DA006C3699 /* Images.xcassets */,
 			);
 			path = AddToClingActionExtension;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				803A694619D746DA006C3699 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
