@@ -23,6 +23,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
                 }
             }
         }
+        extensionContext = nil
     }
 
     func addURL(url: String) {
