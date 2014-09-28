@@ -30,9 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication!) {
         let userDefaults = NSUserDefaults(suiteName: groupName)
         var urls = userDefaults.arrayForKey(keyURLs)
-        if urls == nil {
-            urls = NSMutableArray()
+        if urls == nil || urls!.isEmpty {
+            return
         }
+
         for url in urls! {
             let urlString = url as String
             if !urlString.isEmpty {
@@ -40,6 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         userDefaults.setObject(NSMutableArray(), forKey: keyURLs)
+        ViewControllers.sharedInstance.mainViewController.bufferedWebView?.loadUrls()
+        ViewControllers.sharedInstance.mainViewController.restartTimer()
     }
 
     func applicationWillTerminate(application: UIApplication!) {

@@ -72,7 +72,7 @@ class MainViewController: UIViewController {
         cancelSubject.sendNext(RACUnit.defaultUnit())
     }
 
-    private func restartTimer() {
+    func restartTimer() {
         stopTimer()
         startTimer()
     }
