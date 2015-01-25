@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication!) {
         let userDefaults = NSUserDefaults(suiteName: groupName)
-        var urls = userDefaults.arrayForKey(keyURLs)
+        var urls = userDefaults?.arrayForKey(keyURLs)
         if urls == nil || urls!.isEmpty {
             return
         }
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PageWrapper.createRecord(url as String)
             }
         }
-        userDefaults.setObject(NSMutableArray(), forKey: keyURLs)
+        userDefaults?.setObject(NSMutableArray(), forKey: keyURLs)
         ViewControllers.sharedInstance.mainViewController.bufferedWebView?.loadUrls()
         ViewControllers.sharedInstance.mainViewController.restartTimer()
     }

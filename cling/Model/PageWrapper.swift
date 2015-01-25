@@ -16,11 +16,11 @@ public class PageWrapper {
         pages[fromIndex].sort = toIndex
         if (fromIndex < toIndex) {
             for var i = fromIndex + 1; i <= toIndex; i++ {
-                pages[i].sort = pages[i].sort - 1
+                pages[i].sort = Int(pages[i].sort) - 1
             }
         } else {
             for var i = toIndex; i < fromIndex; i++ {
-                pages[i].sort = pages[i].sort + 1
+                pages[i].sort = Int(pages[i].sort) + 1
             }
         }
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()

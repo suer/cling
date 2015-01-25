@@ -28,14 +28,14 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
 
     func addURL(url: String) {
         let userDefaults = NSUserDefaults(suiteName: groupName)
-        var urls = userDefaults.arrayForKey(keyURLs)
+        var urls = userDefaults?.arrayForKey(keyURLs)
         if urls == nil {
             urls = NSMutableArray()
         }
         let mutableUrls = NSMutableArray(array: urls!)
         mutableUrls.addObject(url)
-        userDefaults.setObject(mutableUrls, forKey: keyURLs)
-        userDefaults.synchronize()
+        userDefaults?.setObject(mutableUrls, forKey: keyURLs)
+        userDefaults?.synchronize()
     }
 
     func itemLoadCompletedWithPreprocessingResults(javaScriptPreprocessingResults: [NSObject: AnyObject]) {

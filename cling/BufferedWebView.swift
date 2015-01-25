@@ -32,11 +32,15 @@ class BufferedWebView: UIView, UIWebViewDelegate {
         activeWebViewIndex = 0
         selectedUrlIndex = 0
         if (viewModel.urls.count > 0) {
-            webViews[0].loadRequest(NSURLRequest(URL: NSURL(string: urls[0])))
+            if let url = NSURL(string: urls[0]) {
+                webViews[0].loadRequest(NSURLRequest(URL: url))
+            }
             addSubview(webViews[0])
         }
         if (viewModel.urls.count > 1) {
-            webViews[1].loadRequest(NSURLRequest(URL: NSURL(string: urls[1])))
+            if let url = NSURL(string: urls[1]) {
+                webViews[1].loadRequest(NSURLRequest(URL: url))
+            }
             addSubview(webViews[1])
             bringSubviewToFront(webViews[0])
         }
@@ -68,7 +72,9 @@ class BufferedWebView: UIView, UIWebViewDelegate {
 
     private func loadBackgroundWebView() {
         let backgroundWebView = webViews[nextActiveWebViewIndex()]
-        backgroundWebView.loadRequest(NSURLRequest(URL: NSURL(string: viewModel.nextURL())))
+        if let url = NSURL(string: viewModel.nextURL()) {
+            backgroundWebView.loadRequest(NSURLRequest(URL: url))
+        }
         backgroundWebView.frame = CGRectMake(0, 0, frame.width, frame.height)
     }
 
