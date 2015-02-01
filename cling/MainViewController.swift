@@ -12,10 +12,6 @@ class MainViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         loadTabBar()
         loadWebView()
-
-#if arch(i386) || arch(x86_64)
-        FLEXManager.sharedManager().showExplorer()
-#endif
     }
 
     override func viewWillAppear(animated: Bool) {

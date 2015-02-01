@@ -4,7 +4,6 @@ pod 'MagicalRecord'
 pod 'ReactiveCocoa'
 pod 'ReactiveViewModel'
 pod 'FontAwesome-iOS'
-pod "FLEX"
 
 post_install do | installer |
   require 'fileutils'

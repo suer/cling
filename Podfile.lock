@@ -1,5 +1,4 @@
 PODS:
-  - FLEX (1.0.1)
   - FontAwesome-iOS (0.0.4)
   - MagicalRecord (2.2):
     - MagicalRecord/Core (= 2.2)
@@ -15,14 +14,12 @@ PODS:
     - ReactiveCocoa (~> 2.1)
 
 DEPENDENCIES:
-  - FLEX
   - FontAwesome-iOS
   - MagicalRecord
   - ReactiveCocoa
   - ReactiveViewModel
 
 SPEC CHECKSUMS:
-  FLEX: 4e53f7bb335cc230113c271b1ee5941cc44d648d
   FontAwesome-iOS: 0c39b9f5d4687d36cf8958f61295c2b7960a7308
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
