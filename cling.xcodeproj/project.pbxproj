@@ -12,6 +12,12 @@
 		800C0BE119BDEFB500A4FBB0 /* FetchedResultsChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */; };
 		800E8B881A7A79A500CB1D6D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 800E8B871A7A79A500CB1D6D /* Settings.bundle */; };
 		8010176419B9E28400AE3A0D /* BufferedWebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010176319B9E28400AE3A0D /* BufferedWebViewModel.swift */; };
+		801A6B031A8B86C0006F4B7D /* right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 801A6B001A8B86C0006F4B7D /* right-arrow.png */; };
+		801A6B041A8B86C0006F4B7D /* right-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 801A6B011A8B86C0006F4B7D /* right-arrow@2x.png */; };
+		801A6B051A8B86C0006F4B7D /* right-arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 801A6B021A8B86C0006F4B7D /* right-arrow@3x.png */; };
+		801A6B091A8B87F5006F4B7D /* preference.png in Resources */ = {isa = PBXBuildFile; fileRef = 801A6B061A8B87F5006F4B7D /* preference.png */; };
+		801A6B0A1A8B87F5006F4B7D /* preference@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 801A6B071A8B87F5006F4B7D /* preference@2x.png */; };
+		801A6B0B1A8B87F5006F4B7D /* preference@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 801A6B081A8B87F5006F4B7D /* preference@3x.png */; };
 		8023A05219D47A8A009254EF /* ActionRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8023A05119D47A8A009254EF /* ActionRequestHandler.swift */; };
 		8023A05719D47A8A009254EF /* AddToClingActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8023A04D19D47A8A009254EF /* AddToClingActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		802CAA4519D0FA610016F5B6 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8047CFFA19CC6A5D00E4AA3F /* fontawesome-webfont.ttf */; };
@@ -79,6 +85,12 @@
 		800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsChange.swift; sourceTree = "<group>"; };
 		800E8B871A7A79A500CB1D6D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = cling/Settings.bundle; sourceTree = "<group>"; };
 		8010176319B9E28400AE3A0D /* BufferedWebViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedWebViewModel.swift; sourceTree = "<group>"; };
+		801A6B001A8B86C0006F4B7D /* right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "right-arrow.png"; path = "Images/right-arrow.png"; sourceTree = "<group>"; };
+		801A6B011A8B86C0006F4B7D /* right-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "right-arrow@2x.png"; path = "Images/right-arrow@2x.png"; sourceTree = "<group>"; };
+		801A6B021A8B86C0006F4B7D /* right-arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "right-arrow@3x.png"; path = "Images/right-arrow@3x.png"; sourceTree = "<group>"; };
+		801A6B061A8B87F5006F4B7D /* preference.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = preference.png; path = Images/preference.png; sourceTree = "<group>"; };
+		801A6B071A8B87F5006F4B7D /* preference@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preference@2x.png"; path = "Images/preference@2x.png"; sourceTree = "<group>"; };
+		801A6B081A8B87F5006F4B7D /* preference@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "preference@3x.png"; path = "Images/preference@3x.png"; sourceTree = "<group>"; };
 		8023A04D19D47A8A009254EF /* AddToClingActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AddToClingActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8023A05019D47A8A009254EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8023A05119D47A8A009254EF /* ActionRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRequestHandler.swift; sourceTree = "<group>"; };
@@ -148,6 +160,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		801A6AFF1A8B86B4006F4B7D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				801A6B061A8B87F5006F4B7D /* preference.png */,
+				801A6B071A8B87F5006F4B7D /* preference@2x.png */,
+				801A6B081A8B87F5006F4B7D /* preference@3x.png */,
+				801A6B001A8B86C0006F4B7D /* right-arrow.png */,
+				801A6B011A8B86C0006F4B7D /* right-arrow@2x.png */,
+				801A6B021A8B86C0006F4B7D /* right-arrow@3x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		8023A04E19D47A8A009254EF /* AddToClingActionExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +234,7 @@
 		80AE1AAF1983C23400524235 /* cling */ = {
 			isa = PBXGroup;
 			children = (
+				801A6AFF1A8B86B4006F4B7D /* Images */,
 				8023A05E19D47B80009254EF /* cling.entitlements */,
 				805FB83219CDBF8C00621E93 /* Resources */,
 				8047CFF919CC6A4100E4AA3F /* font */,
@@ -405,10 +431,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				801A6B0B1A8B87F5006F4B7D /* preference@3x.png in Resources */,
+				801A6B091A8B87F5006F4B7D /* preference.png in Resources */,
+				801A6B031A8B86C0006F4B7D /* right-arrow.png in Resources */,
 				800E8B881A7A79A500CB1D6D /* Settings.bundle in Resources */,
 				802CAA4519D0FA610016F5B6 /* fontawesome-webfont.ttf in Resources */,
+				801A6B041A8B86C0006F4B7D /* right-arrow@2x.png in Resources */,
 				80AE1ABA1983C23400524235 /* Images.xcassets in Resources */,
 				805FB83719CDBFC300621E93 /* Localizable.strings in Resources */,
+				801A6B051A8B86C0006F4B7D /* right-arrow@3x.png in Resources */,
+				801A6B0A1A8B87F5006F4B7D /* preference@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

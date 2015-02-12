@@ -29,13 +29,10 @@ class MainViewController: UIViewController {
     }
 
     func loadTabBar() {
-        let tabBarFont = UIFont(name: "FontAwesome", size: 20.0)
-        let preferenceButton = UIBarButtonItem(title: NSString.awesomeIcon(FaCog), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("preferenceButtonTapped:"))
-        let attributes = [NSFontAttributeName: tabBarFont!]
-        preferenceButton.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
+        let preferenceButton = UIBarButtonItem(image: UIImage(named: "preference"), style: .Plain, target: self, action: Selector("preferenceButtonTapped:"))
         navigationItem.rightBarButtonItem = preferenceButton
-        let nextButton = UIBarButtonItem(title: NSString.awesomeIcon(FaArrowRight), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("nextButtonTapped:"))
-        nextButton.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
+
+        let nextButton = UIBarButtonItem(image: UIImage(named: "right-arrow"), style: .Plain, target: self, action: Selector("nextButtonTapped:"))
         navigationItem.leftBarButtonItem = nextButton
     }
     

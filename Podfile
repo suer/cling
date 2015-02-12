@@ -3,7 +3,6 @@ inhibit_all_warnings!
 pod 'MagicalRecord'
 pod 'ReactiveCocoa'
 pod 'ReactiveViewModel'
-pod 'FontAwesome-iOS'
 
 post_install do | installer |
   require 'fileutils'
