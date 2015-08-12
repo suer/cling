@@ -11,9 +11,8 @@ class URLPreferenceViewController: UIViewController, UITableViewDelegate, UITabl
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    override init() {
-        self.urlEditViewController = URLEditViewController(viewModel: self.viewModel)
-        super.init()
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -54,7 +53,7 @@ class URLPreferenceViewController: UIViewController, UITableViewDelegate, UITabl
     
     private func setupTableView() {
         tableView = UITableView(frame: view.bounds)
-        tableView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        tableView!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         tableView!.delegate = self
         tableView!.dataSource = self
         tableView!.setEditing(false, animated: true)
@@ -119,7 +118,7 @@ class URLPreferenceViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as? UITableViewCell ?? UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") ?? UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         if let page = viewModel.pageAtIndexPath(indexPath) {
             cell.textLabel?.text = page.url
         }

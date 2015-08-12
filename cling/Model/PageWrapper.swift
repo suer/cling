@@ -5,14 +5,14 @@ public class PageWrapper {
     }
 
     class func createRecord(url: String) {
-        let page = Page.MR_createEntity() as Page
+        let page = Page.MR_createEntity() as! Page
         page.url = url
         page.sort = Page.MR_numberOfEntities()
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
 
     class func move(fromIndex: Int, toIndex: Int) {
-        let pages = Page.MR_findAllSortedBy("sort", ascending: true) as [Page]
+        let pages = Page.MR_findAllSortedBy("sort", ascending: true) as! [Page]
         pages[fromIndex].sort = toIndex
         if (fromIndex < toIndex) {
             for var i = fromIndex + 1; i <= toIndex; i++ {

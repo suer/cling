@@ -1,5 +1,10 @@
 class IntervalPreferenceViewModel: NSObject {
-    dynamic var rotationInterval: Int = 60
+    dynamic var rotationInterval: Int = 60 {
+        didSet{
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            userDefaults.setInteger(rotationInterval, forKey: RotationIntervalKey)
+        }
+    }
     let RotationIntervalKey = "rotationInterval"
 
     override init() {
@@ -13,13 +18,7 @@ class IntervalPreferenceViewModel: NSObject {
         if (interval > 0) {
             rotationInterval = interval
         } else {
-            setRotationInterval(60)
+            rotationInterval = 60
         }
-    }
-
-    func setRotationInterval(interval: Int) {
-        rotationInterval = interval
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.setInteger(rotationInterval, forKey: RotationIntervalKey)
     }
 }

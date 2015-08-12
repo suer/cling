@@ -30,7 +30,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
         let userDefaults = NSUserDefaults(suiteName: groupName)
         var urls = userDefaults?.arrayForKey(keyURLs)
         if urls == nil {
-            urls = NSMutableArray()
+            urls = NSMutableArray() as [AnyObject]
         }
         let mutableUrls = NSMutableArray(array: urls!)
         mutableUrls.addObject(url)

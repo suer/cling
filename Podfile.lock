@@ -18,8 +18,8 @@ DEPENDENCIES:
   - ReactiveViewModel
 
 SPEC CHECKSUMS:
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
-  ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
-  ReactiveViewModel: 78387196df2e7535bb2776c41df15dbb17300f8a
+  MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
+  ReactiveCocoa: 334468a83b2c5f669f7cfb9a084415ee23219b4f
+  ReactiveViewModel: 3b25ab68711944b1706b9dd6d1b37f37cbe6b094
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.38.2

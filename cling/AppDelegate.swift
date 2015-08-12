@@ -7,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         MagicalRecord.setupCoreDataStackWithStoreNamed("cling.sqlite3")
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.backgroundColor = UIColor.whiteColor()
@@ -35,9 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         for url in urls! {
-            let urlString = url as String
+            let urlString = url as! String
             if !urlString.isEmpty {
-                PageWrapper.createRecord(url as String)
+                PageWrapper.createRecord(url as! String)
             }
         }
         userDefaults?.setObject(NSMutableArray(), forKey: keyURLs)
