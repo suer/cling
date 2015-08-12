@@ -380,7 +380,6 @@
 				TargetAttributes = {
 					8023A04C19D47A8A009254EF = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = LG7S83GR74;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -389,7 +388,6 @@
 					};
 					80AE1AAC1983C23400524235 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = LG7S83GR74;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
