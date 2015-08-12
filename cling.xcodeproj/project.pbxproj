@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1342D0961B7C0CEF00AE56C2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1342D0951B7C0CEF00AE56C2 /* Launch Screen.storyboard */; };
 		6D9424D06D124BEBAF7CC97F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4AAD2E7C414C0FBBA8288D /* libPods.a */; };
 		800C0BDF19BDE7BE00A4FBB0 /* URLPreferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C0BDE19BDE7BD00A4FBB0 /* URLPreferenceViewModel.swift */; };
 		800C0BE119BDEFB500A4FBB0 /* FetchedResultsChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C0BE019BDEFB500A4FBB0 /* FetchedResultsChange.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1342D0951B7C0CEF00AE56C2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2E5D63DEFF9E790F466DCAE7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		35824B069B7B251CFB17C303 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		800C0BDE19BDE7BD00A4FBB0 /* URLPreferenceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLPreferenceViewModel.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				80AE1AB11983C23400524235 /* Info.plist */,
+				1342D0951B7C0CEF00AE56C2 /* Launch Screen.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				800E8B881A7A79A500CB1D6D /* Settings.bundle in Resources */,
 				802CAA4519D0FA610016F5B6 /* fontawesome-webfont.ttf in Resources */,
 				801A6B041A8B86C0006F4B7D /* right-arrow@2x.png in Resources */,
+				1342D0961B7C0CEF00AE56C2 /* Launch Screen.storyboard in Resources */,
 				80AE1ABA1983C23400524235 /* Images.xcassets in Resources */,
 				805FB83719CDBFC300621E93 /* Localizable.strings in Resources */,
 				801A6B051A8B86C0006F4B7D /* right-arrow@3x.png in Resources */,
