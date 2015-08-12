@@ -8,11 +8,11 @@ class IntervalPreferenceViewController: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
     }
     
-    convenience override init() {
+    convenience init() {
         self.init(nibName: nil, bundle: nil)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -45,9 +45,9 @@ class IntervalPreferenceViewController: UIViewController {
 
         intervalTextField!.rac_textSignal().subscribeNext({
             text in
-            let interval = (text as String).toInt()
+            let interval = Int(text as! String)
             if interval > 0 {
-                self.viewModel.setRotationInterval(interval!)
+                self.viewModel.rotationInterval = interval!
             }
         })
 
@@ -60,7 +60,7 @@ class IntervalPreferenceViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         viewModel.rac_valuesForKeyPath("rotationInterval", observer: viewModel).subscribeNext({
             interval in
-            self.intervalTextField!.text = String(interval as Int)
+            self.intervalTextField!.text = String(interval as! Int)
             return
         })
         viewModel.loadRotationInterval()

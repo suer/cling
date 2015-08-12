@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
         let viewModel = ViewControllers.sharedInstance.intervalPreferenceViewController.viewModel
         viewModel.rac_valuesForKeyPath("rotationInterval", observer: viewModel).subscribeNext({
             interval in
-            self.rotationInterval = Double(interval as Int)
+            self.rotationInterval = Double(interval as! Int)
             return
         })
         viewModel.loadRotationInterval()
@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
             return
         }
         bufferedWebView = BufferedWebView(frame: view.bounds)
-        bufferedWebView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        bufferedWebView!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         view.addSubview(bufferedWebView!)
     }
 

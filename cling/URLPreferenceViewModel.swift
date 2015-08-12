@@ -13,7 +13,11 @@ class URLPreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
 
     private func reloadFetchedResultsController() {
         var error: NSError?
-        fetchedResultsController.performFetch(&error)
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error1 as NSError {
+            error = error1
+        }
         if (error != nil) {
             NSLog("error: %@", error!)
         }
@@ -49,11 +53,11 @@ class URLPreferenceViewModel: RVMViewModel, NSFetchedResultsControllerDelegate {
     }
 
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        (itemChangedSignal as RACSubscriber).sendNext(FetchedResultsChange(indexPath: indexPath, newIndexPath: newIndexPath, type: type))
+        (itemChangedSignal as! RACSubscriber).sendNext(FetchedResultsChange(indexPath: indexPath, newIndexPath: newIndexPath, type: type))
     }
 
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        (contentChangedSignal as RACSubscriber).sendNext("")
+        (contentChangedSignal as! RACSubscriber).sendNext("")
     }
 
     private func trimURL(url: String) -> String {

@@ -14,7 +14,7 @@ class URLEditViewController: UIViewController, UITextViewDelegate {
         self.init(nibName: nil, bundle: nil, viewModel: viewModel)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

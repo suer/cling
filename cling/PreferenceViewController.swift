@@ -9,11 +9,11 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         view.backgroundColor = UIColor.whiteColor()
     }
 
-    convenience override init() {
+    convenience init() {
         self.init(nibName: nil, bundle: nil)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -31,14 +31,14 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
 
     private func setupTableView() {
         tableView = UITableView(frame: view.bounds, style: UITableViewStyle.Grouped)
-        tableView!.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        tableView!.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         tableView!.delegate = self
         tableView!.dataSource = self
         tableView!.setEditing(false, animated: true)
         view.addSubview(tableView!)
     }
 
-    func tableView(tableView: UITableView, titleForHeaderInSection section: NSInteger) -> NSString {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
     }
 

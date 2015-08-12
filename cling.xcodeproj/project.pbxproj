@@ -370,6 +370,8 @@
 		80AE1AA51983C23400524235 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = codefirst.org;
 				TargetAttributes = {

@@ -1,5 +1,5 @@
 class BufferedWebView: UIView, UIWebViewDelegate {
-    let webViews = [UIWebView]()
+    var webViews = [UIWebView]()
     private var activeWebViewIndex = 0
     private var selectedUrlIndex = 0
     private var viewModel = BufferedWebViewModel()
@@ -8,19 +8,19 @@ class BufferedWebView: UIView, UIWebViewDelegate {
         super.init(frame: frame)
         for var i = 0; i < 2; i++ {
             let webView = UIWebView(frame: frame)
-            webView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+            webView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
             webView.delegate = self
             webViews.append(webView)
         }
         viewModel.rac_valuesForKeyPath("urls", observer: viewModel).subscribeNext({
             urls in
-            self.resetWebViews(urls as [String])
+            self.resetWebViews(urls as! [String])
             return
         })
         loadUrls()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -84,6 +84,6 @@ class BufferedWebView: UIView, UIWebViewDelegate {
     func webViewDidFinishLoad(webView: UIWebView) {
     }
 
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
     }
 }
