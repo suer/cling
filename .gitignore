@@ -6,4 +6,3 @@ preference.plist
 *.ipa
 *.app.dSYM.zip
 certs/
-cling/font/fontawesome-webfont.ttf

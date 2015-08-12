@@ -23,6 +23,10 @@ then open cling.xcworkspace and build.
 
 License
 ------------------------------
+### Fonts
+`cling/font/fontawesome-webfont.ttf` is distributed under [SIL OFL 1.1](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL) at [FontAwesome](http://fortawesome.github.io/Font-Awesome/).
+
+### All others
 The MIT License (MIT)
 Copyright (c) 2014 suer
 
